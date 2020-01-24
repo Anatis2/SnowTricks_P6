@@ -4,4 +4,14 @@
 
 {% block body %}
     <h1>Les figures</h1>
+
+    {% for trick in tricks %}
+
+        <div>
+            <h2>{{ trick.name }}</h2>
+            <p>{{ trick.description }}</p>
+        </div>
+        
+    {% endfor %}
+
 {% endblock %}
