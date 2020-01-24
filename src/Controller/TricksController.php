@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Trick;
 use App\Form\TrickType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TricksController extends AbstractController
@@ -20,15 +21,11 @@ class TricksController extends AbstractController
 	/**
 	 * @Route("/creer", name="createTrick")
 	 */
-	public function createTrick()
+	public function createTrick(Request $request)
 	{
-
 		$trick = new Trick();
 
-		$form = $this->createFormBuilder($trick)
-					 ->add('name')
-					 ->add('description')
-					 ->getForm();
+		$form = $this->createForm(TrickType::class, $trick);
 
 		return $this->render('tricks/createTrick.html.twig', [
 			'form' => $form->createView()
