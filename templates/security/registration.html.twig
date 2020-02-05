@@ -5,4 +5,16 @@
 {% block body %}
     <h1>Inscription</h1>
 
+    {{ form_start(registrationForm) }}
+
+    {{ form_row(registrationForm.surname, {'label': "Nom", 'attr': {'placeholder': "Votre nom"}}) }}
+    {{ form_row(registrationForm.firstname, {'label': "Prénom", 'attr': {'placeholder': "Votre prénom"}}) }}
+    {{ form_row(registrationForm.email, {'label': "Email", 'attr': {'placeholder': "Votre adresse email"}}) }}
+    {{ form_row(registrationForm.phonenumber, {'label': "Numéro de téléphone (facultatif)", 'attr': {'placeholder': "Votre numéro de téléphone"}}) }}
+    {{ form_row(registrationForm.password, {'label': "Mot de passe", 'attr': {'placeholder': "Votre mot de passe"}}) }}
+
+    <button type="submit" class="btn btn-primary">S'inscrire</button>
+
+    {{ form_end(registrationForm) }}
+
 {% endblock %}

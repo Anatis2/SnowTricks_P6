@@ -7,6 +7,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(name="sf_User")
  */
 class User implements UserInterface
 {
@@ -17,10 +18,25 @@ class User implements UserInterface
      */
     private $id;
 
+	/**
+	 * @ORM\Column(type="string", length=255, unique=false)
+	 */
+	private $surname;
+
+	/**
+	 * @ORM\Column(type="string", length=255, unique=false)
+	 */
+	private $firstname;
+
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
+
+	/**
+	 * @ORM\Column(type="string", length=255, unique=false)
+	 */
+	private $phonenumber;
 
     /**
      * @ORM\Column(type="json")
@@ -33,10 +49,38 @@ class User implements UserInterface
      */
     private $password;
 
+
     public function getId(): ?int
     {
         return $this->id;
     }
+
+
+	public function getSurname(): ?string
+	{
+		return $this->surname;
+	}
+
+	public function setSurname(string $surname): self
+	{
+		$this->surname = $surname;
+
+		return $this;
+	}
+
+
+	public function getFirstname(): ?string
+	{
+		return $this->firstname;
+	}
+
+	public function setFirstname(string $firstname): self
+	{
+		$this->firstname = $firstname;
+
+		return $this;
+	}
+
 
     public function getEmail(): ?string
     {
@@ -49,6 +93,19 @@ class User implements UserInterface
 
         return $this;
     }
+
+
+	public function getPhonenumber(): ?string
+	{
+		return $this->phonenumber;
+	}
+
+	public function setPhonenumber(string $phonenumber): self
+	{
+		$this->phonenumber = $phonenumber;
+
+		return $this;
+	}
 
     /**
      * A visual identifier that represents this user.
