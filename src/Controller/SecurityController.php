@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,11 +16,18 @@ class SecurityController extends AbstractController
 	/**
 	 * @Route("/inscription", name="registration")
 	 */
-	public function registration(Request $request)
+	public function registration(Request $request, EntityManagerInterface $manager)
 	{
 		$user = new User();
 
 		$registrationForm = $this->createForm(RegistrationType::class, $user);
+
+		$registrationForm->handleRequest($request);
+
+		if($registrationForm->isSubmitted() && $registrationForm->isValid()) {
+			$manager->persist($user);
+			$manager->flush();
+		}
 
 		return $this->render('security/registration.html.twig', [
 			'registrationForm' => $registrationForm->createView()
