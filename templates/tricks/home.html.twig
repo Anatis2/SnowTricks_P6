@@ -3,15 +3,22 @@
 {% block title %}Les figures{% endblock %}
 
 {% block body %}
-    <h1>Les figures</h1>
 
-    {% for trick in tricks %}
+    <article>
 
-        <div>
-            <h2>{{ trick.name }}</h2>
-            <p>{{ trick.description }}</p>
-        </div>
+        <h1>Les figures</h1>
 
-    {% endfor %}
+        {% for trick in tricks %}
+
+            <div class="card col-5">
+                <h4>{{ trick.name }}</h4>
+                <p><em>Ajouté le {{ trick.createdAt | date('d/m/Y') }}</em></p>
+                <p>{{ trick.description }}</p>
+                <p><a href="{{ path('showTrick', {'id': trick.id}) }}">Voir le détail</a></p>
+            </div>
+
+        {% endfor %}
+
+    </article>
 
 {% endblock %}

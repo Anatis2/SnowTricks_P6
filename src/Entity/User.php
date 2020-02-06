@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -30,6 +31,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+	 * @Assert\Email(message="Veuillez taper un email valide")
      */
     private $email;
 
@@ -37,6 +39,11 @@ class User implements UserInterface
 	 * @ORM\Column(type="string", length=255, unique=false)
 	 */
 	private $phonenumber;
+
+	/**
+	 * @ORM\Column(type="datetime")
+	 */
+	private $createdAt;
 
     /**
      * @ORM\Column(type="json")
@@ -105,6 +112,17 @@ class User implements UserInterface
 		$this->phonenumber = $phonenumber;
 
 		return $this;
+	}
+
+
+	public function getCreatedAt()
+	{
+		return $this->createdAt;
+	}
+
+	public function setCreatedAt($createdAt): void
+	{
+		$this->createdAt = $createdAt;
 	}
 
     /**

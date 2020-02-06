@@ -5,7 +5,8 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css">
+            <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css" />
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}?v{{ app_version }}" type="text/css" />
         {% endblock %}
     </head>
 

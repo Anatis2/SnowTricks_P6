@@ -28,6 +28,11 @@ class Trick
      */
     private $description;
 
+	/**
+	 * @ORM\Column(type="datetime")
+	 */
+	private $createdAt;
+
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="tricks")
      * @ORM\JoinColumn(nullable=false)
@@ -72,6 +77,17 @@ class Trick
 
         return $this;
     }
+
+
+	public function getCreatedAt()
+	{
+		return $this->createdAt;
+	}
+
+	public function setCreatedAt($createdAt): void
+	{
+		$this->createdAt = $createdAt;
+	}
 
     public function getCategory(): ?Category
     {
