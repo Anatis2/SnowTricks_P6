@@ -27,6 +27,8 @@ class SecurityController extends AbstractController
 		if($registrationForm->isSubmitted() && $registrationForm->isValid()) {
 			$manager->persist($user);
 			$manager->flush();
+			$this->addFlash('success', 'Votre inscription a bien été prise en compte ! <br/> Vous pouvez vous connecter ;-)');
+			return $this->redirectToRoute('login');
 		}
 
 		return $this->render('security/registration.html.twig', [

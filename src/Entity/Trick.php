@@ -46,6 +46,7 @@ class Trick
 
     public function __construct()
     {
+		$this->createdAt = new \DateTime();
         $this->pictures = new ArrayCollection();
     }
 

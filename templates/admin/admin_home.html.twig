@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil Administrateur{% endblock %}
+
+{% block body %}
+
+    <article>
+
+        <h1>Gérer les figures</h1>
+
+        {% for message in app.flashes('success') %}
+
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+
+        {% endfor %}
+
+
+        <table class="table table-striped">
+
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            {% for trick in tricks %}
+                <tr>
+                    <td>{{ trick.name }}</td>
+                    <td>
+                        <a href="{{ path('editTrick', {id: trick.id}) }}" class="btn btn-secondary">Editer</a>
+                        <form action="{{ path('deleteTrick', {id: trick.id}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}" />
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    </article>
+
+{% endblock %}

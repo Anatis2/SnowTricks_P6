@@ -29,31 +29,10 @@ class TrickController extends AbstractController
 	 */
     public function show(Trick $trick)
 	{
+
 		return $this->render('tricks/showTrick.html.twig', [
 			'trick' => $trick
 		]);
 	}
-
-	/**
-	 * @Route("/creer", name="createTrick")
-	 */
-	public function createTrick(Request $request, EntityManagerInterface $manager)
-	{
-		$trick = new Trick();
-
-		$form = $this->createForm(TrickType::class, $trick);
-
-		$form->handleRequest($request);
-
-		if($form->isSubmitted() && $form->isValid()) {
-			$manager->persist($trick);
-			$manager->flush();
-		}
-
-		return $this->render('tricks/createTrick.html.twig', [
-			'form' => $form->createView()
-		]);
-	}
-
 
 }

@@ -6,8 +6,9 @@
 
     <article>
         <h1>{{ trick.name }}</h1>
-
-        {{ trick.description }}
+        <p>Catégorie : {{ trick.category.name }} <em>(Ajouté le {{ trick.createdAt | date('d/m/Y') }})</em></p>
+        <p>{{ trick.description }}</p>
+        <p><a href="{{ path('home')}}">Retour à la liste des figures...</a></p>
     </article>
 
 {% endblock %}
