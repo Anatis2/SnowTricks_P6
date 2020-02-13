@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,14 +27,9 @@ class Picture
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Trick", inversedBy="pictures")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Trick", inversedBy="pictures")
      */
-    private $Trick;
-
-    public function __construct()
-    {
-        $this->Trick = new ArrayCollection();
-    }
+    private $trick;
 
     public function getId(): ?int
     {
@@ -67,28 +60,14 @@ class Picture
         return $this;
     }
 
-    /**
-     * @return Collection|Trick[]
-     */
-    public function getTrick(): Collection
+    public function getTrick(): ?Trick
     {
-        return $this->Trick;
+        return $this->trick;
     }
 
-    public function addTrick(Trick $trick): self
+    public function setTrick(?Trick $trick): self
     {
-        if (!$this->Trick->contains($trick)) {
-            $this->Trick[] = $trick;
-        }
-
-        return $this;
-    }
-
-    public function removeTrick(Trick $trick): self
-    {
-        if ($this->Trick->contains($trick)) {
-            $this->Trick->removeElement($trick);
-        }
+        $this->trick = $trick;
 
         return $this;
     }

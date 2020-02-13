@@ -14,7 +14,7 @@ class AdminTrickController extends AbstractController
 {
 
 	/**
-	 * @Route("/création", name="createTrick")
+	 * @Route("admin/création", name="createTrick")
 	 */
 	public function createTrick(Request $request, EntityManagerInterface $manager)
 	{
@@ -38,7 +38,7 @@ class AdminTrickController extends AbstractController
 
 
 	/**
-	 * @Route("/administration", name="adminHome")
+	 * @Route("admin/administration", name="adminHome")
 	 */
 	public function adminHome(TrickRepository $repo)
 	{

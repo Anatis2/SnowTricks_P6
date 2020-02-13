@@ -37,7 +37,7 @@ class SecurityController extends AbstractController
 	}
 
     /**
-     * @Route("/connexion", name="login")
+     * @Route("/login", name="login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -57,7 +57,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/déconnexion", name="logout")
+     * @Route("/logout", name="logout")
      */
     public function logout()
     {

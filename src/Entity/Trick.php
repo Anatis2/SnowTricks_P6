@@ -40,9 +40,10 @@ class Trick
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Picture", mappedBy="Trick")
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="trick")
      */
     private $pictures;
+
 
     public function __construct()
     {
@@ -81,14 +82,14 @@ class Trick
 
 
 	public function getCreatedAt()
-	{
-		return $this->createdAt;
-	}
+            	{
+            		return $this->createdAt;
+            	}
 
 	public function setCreatedAt($createdAt): void
-	{
-		$this->createdAt = $createdAt;
-	}
+            	{
+            		$this->createdAt = $createdAt;
+            	}
 
     public function getCategory(): ?Category
     {
@@ -126,6 +127,18 @@ class Trick
             $this->pictures->removeElement($picture);
             $picture->removeTrick($this);
         }
+
+        return $this;
+    }
+
+    public function getPicture(): ?Picture
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?Picture $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }
