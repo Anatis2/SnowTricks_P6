@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
@@ -16,7 +17,7 @@ class SecurityController extends AbstractController
 	/**
 	 * @Route("/inscription", name="registration")
 	 */
-	public function registration(Request $request, EntityManagerInterface $manager)
+	public function registration(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
 	{
 		$user = new User();
 
@@ -25,6 +26,8 @@ class SecurityController extends AbstractController
 		$registrationForm->handleRequest($request);
 
 		if($registrationForm->isSubmitted() && $registrationForm->isValid()) {
+			$password = $encoder->encodePassword($user, $user->getPassword());
+			$user->setPassword($password);
 			$manager->persist($user);
 			$manager->flush();
 			$this->addFlash('success', 'Votre inscription a bien été prise en compte ! <br/> Vous pouvez vous connecter ;-)');
@@ -41,9 +44,6 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();

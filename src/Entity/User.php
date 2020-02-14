@@ -36,7 +36,7 @@ class User implements UserInterface,\Serializable
     private $email;
 
 	/**
-	 * @ORM\Column(type="string", length=255, unique=false)
+	 * @ORM\Column(type="string", length=255, unique=false, nullable=true)
 	 */
 	private $phonenumber;
 
@@ -199,7 +199,7 @@ class User implements UserInterface,\Serializable
 	 */
 	public function serialize()
 	{
-		return $this->serialize([
+		return serialize([
 			$this->id,
 			$this->email,
 			$this->password

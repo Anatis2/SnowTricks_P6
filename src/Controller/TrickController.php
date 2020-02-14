@@ -7,6 +7,7 @@ use App\Entity\Trick;
 use App\Form\TrickType;
 use App\Repository\TrickRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,9 +17,14 @@ class TrickController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function home(TrickRepository $repo)
+    public function home(TrickRepository $repo, PaginatorInterface $paginator, Request $request)
     {
-    	$tricks = $repo->findAll();
+
+    	$tricks = $paginator->paginate(
+    		$repo->findAll(),
+			$request->query->getInt('page', 1),
+			4
+		);
 
         return $this->render('tricks/home.html.twig', [
 			'tricks' => $tricks

@@ -21,9 +21,10 @@ security:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
             form_login:
+                login_path: login
                 check_path: login
             logout:
-                path: app_logout
+                path: logout
                 # where to redirect after logout
                 # target: app_any_route
             remember_me:
@@ -38,5 +39,5 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin/^, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
