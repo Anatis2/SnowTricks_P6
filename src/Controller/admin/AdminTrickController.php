@@ -2,6 +2,7 @@
 
 namespace App\Controller\admin;
 
+use App\Entity\Picture;
 use App\Entity\Trick;
 use App\Form\TrickType;
 use App\Repository\TrickRepository;
@@ -27,6 +28,7 @@ class AdminTrickController extends AbstractController
 		if($form->isSubmitted() && $form->isValid()) {
 			$manager->persist($trick);
 			$manager->flush();
+
 			$this->addFlash('success', 'La figure a été créée avec succès !');
 			return $this->redirectToRoute('adminHome');
 		}

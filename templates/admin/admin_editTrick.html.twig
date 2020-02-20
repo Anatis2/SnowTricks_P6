@@ -7,12 +7,12 @@
 {% block body %}
     <h1>Modification d'une figure</h1>
 
-
     {{ form_start(form) }}
 
     {{ form_row(form.category, {'label': 'Catégorie'}) }}
     {{ form_row(form.name, {'label': 'Nom de la figure'}) }}
     {{ form_row(form.description, {'label': 'Description de la figure'}) }}
+    {{ form_row(form.pictures) }}
 
     <button type="submit" class="btn btn-primary">Modifier la figure</button>
 
