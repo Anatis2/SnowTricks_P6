@@ -3,5 +3,5 @@ vich_uploader:
 
     mappings:
         property_picture:
-            uri_prefix: /images/trickPictures
+            uri_prefix: /images/pictures
             upload_destination: '%kernel.project_dir%/public/images/pictures'

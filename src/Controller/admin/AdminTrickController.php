@@ -26,6 +26,9 @@ class AdminTrickController extends AbstractController
 		$form->handleRequest($request);
 
 		if($form->isSubmitted() && $form->isValid()) {
+			foreach ($trick->getPictures() as $k => $picture) {
+				$picture->setTrick($trick);
+			}
 			$manager->persist($trick);
 			$manager->flush();
 

@@ -35,12 +35,12 @@ class Trick
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="tricks")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="trick", cascade={"persist"})
+	 * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;
 

@@ -11,10 +11,17 @@
         {% for trick in tricks %}
 
             <div class="card col-5">
-                <h4>{{ trick.name }}</h4>
+                <h4><a href="{{ path('showTrick', {'id': trick.id}) }}">{{ trick.name }}</a></h4>
                 <p>Catégorie : {{ trick.category.name }} <em>(Ajouté le {{ trick.createdAt | date('d/m/Y') }})</em></p>
-                <p>{{ trick.description }}</p>
-                <p><a href="{{ path('showTrick', {'id': trick.id}) }}">Voir le détail</a></p>
+                {% if trick.pictures is empty %}
+                    <img src="/images/empty.jpg" alt="image">
+                {% else %}
+                    {% for picture in trick.pictures %}
+                        {% if loop.index == 1 %}
+                            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="image">
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
 
         {% endfor %}

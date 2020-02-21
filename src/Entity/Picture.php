@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -37,9 +38,9 @@ class Picture
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Trick", inversedBy="pictures")
+	 * @ORM\JoinColumn(nullable=false, name="trick_id", referencedColumnName="id")
      */
     private $trick;
-
 
     public function getId(): ?int
     {
@@ -119,4 +120,5 @@ class Picture
 
         return $this;
     }
+
 }
