@@ -19,11 +19,10 @@ class TrickController extends AbstractController
      */
     public function home(TrickRepository $repo, PaginatorInterface $paginator, Request $request)
     {
-
     	$tricks = $paginator->paginate(
     		$repo->findAll(),
 			$request->query->getInt('page', 1),
-			4
+			15
 		);
 
         return $this->render('tricks/home.html.twig', [

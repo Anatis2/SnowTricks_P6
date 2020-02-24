@@ -5,24 +5,29 @@
 {% block title %}Modifier une figure{% endblock %}
 
 {% block body %}
-    <h1>Modification d'une figure</h1>
 
-    {{ form_start(form) }}
+    <div class="container">
 
-    {{ form_row(form.category, {'label': 'Catégorie'}) }}
-    {{ form_row(form.name, {'label': 'Nom de la figure'}) }}
-    {{ form_row(form.description, {'label': 'Description de la figure'}) }}
+        <h1>Modification d'une figure</h1>
 
-    <h5>Images</h5>
+        {{ form_start(form) }}
 
-    <div class="form-group">
-        {{ form_row(form.pictures, {'label': false }) }}
-        <a href="#" id="add_picture" class="btn btn-success btn-sm">Ajouter une image</a>
+        {{ form_row(form.category, {'label': 'Catégorie'}) }}
+        {{ form_row(form.name, {'label': 'Nom de la figure'}) }}
+        {{ form_row(form.description, {'label': 'Description de la figure'}) }}
+
+        <h5>Images</h5>
+
+        <div class="form-group">
+            {{ form_row(form.pictures, {'label': false }) }}
+            <a href="#" id="add_picture" class="btn btn-success btn-sm">Ajouter une image</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Modifier la figure</button>
+
+        {{ form_end(form) }}
+
     </div>
-
-    <button type="submit" class="btn btn-primary">Modifier la figure</button>
-
-    {{ form_end(form) }}
 
 {% endblock %}
 
