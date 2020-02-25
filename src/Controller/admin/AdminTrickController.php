@@ -56,7 +56,7 @@ class AdminTrickController extends AbstractController
 
 
 	/**
-	 * @Route("/edition/{id}", name="editTrick")
+	 * @Route("admin/edition/{id}", name="editTrick")
 	 */
 	public function editTrick(Trick $trick, Request $request, EntityManagerInterface $manager)
 	{
@@ -76,7 +76,7 @@ class AdminTrickController extends AbstractController
 	}
 
 	/**
-	 * @Route("/suppression/{id}", name="deleteTrick")
+	 * @Route("admin/suppression/{id}", name="deleteTrick")
 	 */
 	public function deleteTrick(Trick $trick, Request $request, EntityManagerInterface $manager)
 	{
