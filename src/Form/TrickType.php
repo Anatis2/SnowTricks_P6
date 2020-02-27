@@ -23,7 +23,8 @@ class TrickType extends AbstractType
 				'choice_label' => 'name'
 			])
 			->add('pictures', CollectionType::class, [
-				'entry_type' => PictureType::class,
+                'entry_type' => PictureType::class,
+                'required' => false,
 				'allow_add' => true,
 				'allow_delete' => true
 			]);
