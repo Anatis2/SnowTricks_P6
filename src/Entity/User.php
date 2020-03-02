@@ -56,11 +56,16 @@ class User implements UserInterface,\Serializable
      */
     private $password;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="user")
+     */
+    private $messages;
+
 
 	public function __construct()
-	{
-		$this->createdAt = new \DateTime();
-	}
+         	{
+         		$this->createdAt = new \DateTime();
+         	}
 
     public function getId(): ?int
     {
@@ -69,29 +74,29 @@ class User implements UserInterface,\Serializable
 
 
 	public function getSurname(): ?string
-	{
-		return $this->surname;
-	}
+         	{
+         		return $this->surname;
+         	}
 
 	public function setSurname(string $surname): self
-	{
-		$this->surname = $surname;
-
-		return $this;
-	}
+         	{
+         		$this->surname = $surname;
+         
+         		return $this;
+         	}
 
 
 	public function getFirstname(): ?string
-	{
-		return $this->firstname;
-	}
+         	{
+         		return $this->firstname;
+         	}
 
 	public function setFirstname(string $firstname): self
-	{
-		$this->firstname = $firstname;
-
-		return $this;
-	}
+         	{
+         		$this->firstname = $firstname;
+         
+         		return $this;
+         	}
 
 
     public function getEmail(): ?string
@@ -108,27 +113,27 @@ class User implements UserInterface,\Serializable
 
 
 	public function getPhonenumber(): ?string
-	{
-		return $this->phonenumber;
-	}
+         	{
+         		return $this->phonenumber;
+         	}
 
 	public function setPhonenumber(string $phonenumber): self
-	{
-		$this->phonenumber = $phonenumber;
-
-		return $this;
-	}
+         	{
+         		$this->phonenumber = $phonenumber;
+         
+         		return $this;
+         	}
 
 
 	public function getCreatedAt()
-	{
-		return $this->createdAt;
-	}
+         	{
+         		return $this->createdAt;
+         	}
 
 	public function setCreatedAt($createdAt): void
-	{
-		$this->createdAt = $createdAt;
-	}
+         	{
+         		$this->createdAt = $createdAt;
+         	}
 
     /**
      * A visual identifier that represents this user.
@@ -175,6 +180,37 @@ class User implements UserInterface,\Serializable
     }
 
     /**
+     * @return Collection|Message[]
+     */
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    public function addMessage(Message $message): self
+    {
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessage(Message $message): self
+    {
+        if ($this->messages->contains($message)) {
+            $this->messages->removeElement($message);
+            // set the owning side to null (unless already changed)
+            if ($message->getUser() === $this) {
+                $message->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * @see UserInterface
      */
     public function getSalt()
@@ -198,13 +234,13 @@ class User implements UserInterface,\Serializable
 	 * @since 5.1.0
 	 */
 	public function serialize()
-	{
-		return serialize([
-			$this->id,
-			$this->email,
-			$this->password
-		]);
-	}
+         	{
+         		return serialize([
+         			$this->id,
+         			$this->email,
+         			$this->password
+         		]);
+         	}
 
 	/**
 	 * Constructs the object
@@ -216,11 +252,12 @@ class User implements UserInterface,\Serializable
 	 * @since 5.1.0
 	 */
 	public function unserialize($serialized)
-	{
-		list(
-			$this->id,
-			$this->email,
-			$this->password
-			) = unserialize($serialized, ['allowed_classes' => false]);
-	}
+         	{
+         		list(
+         			$this->id,
+         			$this->email,
+         			$this->password
+         			) = unserialize($serialized, ['allowed_classes' => false]);
+         	}
+
 }

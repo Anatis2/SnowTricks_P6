@@ -4,54 +4,53 @@
 
 {% block body %}
 
-    <div class="container-fluid">
-
-        <div class="cover">
+    <div class="cover">
+        <div id="coverText">
             <h1>Titre</h1>
             <p class="subtitle">Phrase d'accroche</p>
-            <i class="fas fa-arrow-down"></i>
         </div>
+        <div id="arrowDownIcon">
+            <a href="#tricksArticle"><i class="fas fa-arrow-down"></i></a>
+        </div>
+    </div>
 
-        <article>
+    <article class="container-fluid" id="tricksArticle">
 
-            <div class="row">
-                {% for trick in tricks %}
-
-                    <div class="card col-sm-4 col-md-3 col-lg-2 col-xl-2">
-                        {% if trick.pictures is empty %}
-                            <img src="/images/empty.jpg" class="card-img-top" alt="image">
-                        {% else %}
-                            {% for picture in trick.pictures %}
-                                {% if loop.index == 1 %}
-                                    <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" class="card-img-top" alt="image">
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                        <div class="card-body">
-                            <div class="row">
-                                <h4 class="card-title col-sm-9 col-md-10 col-lg-8 col-xl-8"><a href="{{ path('showTrick', {'id': trick.id}) }}">{{ trick.name }}</a></h4>
-                                {% if(app.user) %}
-                                    <div class="col-sm-3 col-md-2 col-lg-4 col-xl-4">
-                                        <a href="{{ path('editTrick', {id: trick.id}) }}"><i class="fas fa-pencil-alt"></i></a>
-                                        <form action="{{ path('deleteTrick', {id: trick.id}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
-                                            <input type="hidden" name="_method" value="DELETE" />
-                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}" />
-                                            <button class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
-                                        </form>
-                                        
-                                    </div>
-                                {% endif %}
-                            </div>
+        <div class="homeCards">
+            {% for trick in tricks %}
+                <div class="card col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                    {% if trick.pictures is empty %}
+                        <img src="/images/empty.jpg" class="card-img-top" alt="image">
+                    {% else %}
+                        {% for picture in trick.pictures %}
+                            {% if loop.index == 1 %}
+                                <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" class="card-img-top" alt="image">
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="card-title col-sm-9 col-md-10 col-lg-8 col-xl-8"><a href="{{ path('showTrick', {'id': trick.id}) }}">{{ trick.name }}</a></h4>
+                            {% if(app.user) %}
+                                <div class="col-sm-3 col-md-2 col-lg-4 col-xl-4">
+                                    <a href="{{ path('editTrick', {id: trick.id}) }}"><i class="fas fa-pencil-alt"></i></a>
+                                    <form action="{{ path('deleteTrick', {id: trick.id}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
+                                        <input type="hidden" name="_method" value="DELETE" />
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}" />
+                                        <button class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
+                                    </form>
+                                    
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
+                </div>
 
-                {% endfor %}
-            </div>
+            {% endfor %}
+        </div>
 
-            {{ knp_pagination_render(tricks) }}
+        {{ knp_pagination_render(tricks) }}
 
-        </article>
-
-    </div>
+    </article>
 
 {% endblock %}

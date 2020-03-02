@@ -4,14 +4,18 @@
 
 {% block body %}
 
-    <article>
-        <h1>{{ trick.name }}</h1>
-        <p>Catégorie : {{ trick.category.name }} <em>(Ajouté le {{ trick.createdAt | date('d/m/Y') }})</em></p>
-        <p>{{ trick.description }}</p>
-            {% for picture in trick.pictures %}
-                <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="image">
-            {% endfor %}
-        <p><a href="{{ path('home')}}">Retour à la liste des figures...</a></p>
-    </article>
+    <div class="container">
+
+        <article>
+            <h1>{{ trick.name }}</h1>
+            <p>Catégorie : {{ trick.category.name }} <em>(Ajouté le {{ trick.createdAt | date('d/m/Y') }})</em></p>
+            <p>{{ trick.description }}</p>
+                {% for picture in trick.pictures %}
+                    <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="image">
+                {% endfor %}
+            <p><a href="{{ path('home')}}">Retour à la liste des figures...</a></p>
+        </article>
+
+    </div>
 
 {% endblock %}

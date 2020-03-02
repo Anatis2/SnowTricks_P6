@@ -11,19 +11,33 @@ body .cover {
   /* met le texte au centre de l'image (horizontalement) */
   text-align: center;
   padding: 0 20px;
+  position: relative;
 }
-body article {
-  margin: 5px;
-  padding: 5px;
+body .cover #arrowDownIcon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
-body article .card {
+body .cover #arrowDownIcon .fa-arrow-down {
+  font-size: 30px;
+  margin-right: 60px;
+  margin-bottom: 80px;
+}
+body article .homeCards {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+body article .homeCards .card {
   height: auto;
   display: inline-block;
   margin: 10px;
-  padding: 12px;
-  text-align: justify;
+  padding-top: 10px;
+  min-width: 250px;
+  max-width: 350px;
 }
-body article .card .card-img-top {
+body article .homeCards .card .card-img-top {
   width: 100%;
   height: 150px;
 }
