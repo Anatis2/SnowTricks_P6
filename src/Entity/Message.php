@@ -42,7 +42,7 @@ class Message
 
     public function __construct()
     {
-        $this->user = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int

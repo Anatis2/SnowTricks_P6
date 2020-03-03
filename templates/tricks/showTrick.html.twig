@@ -16,6 +16,26 @@
             <p><a href="{{ path('home')}}">Retour à la liste des figures...</a></p>
         </article>
 
+        {% if(app.user) %}
+            {{ form_start(form)}}
+            <div class="form-group">
+                {{ form_row(form.content, {'label': ' '}) }}
+                <button type="submit" class="btn btn-primary">Envoyer le commentaire</button>
+            {{ form_end(form)}}
+            </div>
+        {% endif %}
+
+        <article>
+            <h4>Commentaires</h4>
+            {% if trick.messages is empty %}
+                <p>Il n'y a pas encore de commentaire associé à cette figure</p>
+            {% else %}
+                {% for message in trick.messages %}
+                    <p>{{ message.content  }}</p>
+                {% endfor %}
+            {% endif %}
+        </article>
+
     </div>
 
 {% endblock %}
