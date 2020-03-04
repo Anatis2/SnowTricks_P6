@@ -16,34 +16,34 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TrickController extends AbstractController
 {
-    /**
-     * @Route("/", name="home")
-     */
-    public function home(TrickRepository $repo, PaginatorInterface $paginator, Request $request)
-    {
-    	$tricks = $paginator->paginate(
-    		$repo->findAll(),
+	/**
+	 * @Route("/", name="home")
+	 */
+	public function home(TrickRepository $repo, PaginatorInterface $paginator, Request $request)
+	{
+		$tricks = $paginator->paginate(
+			$repo->findAll(),
 			$request->query->getInt('page', 1),
 			15
 		);
 
-        return $this->render('tricks/home.html.twig', [
+		return $this->render('tricks/home.html.twig', [
 			'tricks' => $tricks
 		]);
-    }
+	}
 
 	/**
 	 * @Route("/figure/{id}", name="showTrick")
 	 */
-    public function show(Trick $trick, Request $request, EntityManagerInterface $manager)
+	public function show(Trick $trick, Request $request, EntityManagerInterface $manager)
 	{
-		$message = new Message();
+		$message = new Message($trick);
 
 		$form = $this->createForm(MessageType::class, $message);
-
 		$form->handleRequest($request);
 
-		if($form->isSubmitted() && $form->isValid()) {
+		if ($form->isSubmitted() && $form->isValid()) {
+			$message->setUser($this->getUser());
 			$manager->persist($message);
 			$manager->flush();
 		}

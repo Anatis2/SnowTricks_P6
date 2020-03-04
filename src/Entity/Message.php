@@ -40,8 +40,9 @@ class Message
      */
     private $user;
 
-    public function __construct()
+    public function __construct($trick = null)
     {
+    	if ($trick !== null) $this->trick = $trick;
         $this->createdAt = new \DateTime();
     }
 
@@ -86,34 +87,21 @@ class Message
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUser(): Collection
-    {
-        return $this->user;
-    }
+	/**
+	 * @return mixed
+	 */
+	public function getUser()
+	{
+		return $this->user;
+	}
 
-    public function addUser(User $user): self
-    {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
-            $user->setMessage($this);
-        }
+	/**
+	 * @param mixed $user
+	 */
+	public function setUser($user): void
+	{
+		$this->user = $user;
+	}
 
-        return $this;
-    }
 
-    public function removeUser(User $user): self
-    {
-        if ($this->user->contains($user)) {
-            $this->user->removeElement($user);
-            // set the owning side to null (unless already changed)
-            if ($user->getMessage() === $this) {
-                $user->setMessage(null);
-            }
-        }
-
-        return $this;
-    }
 }
