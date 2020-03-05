@@ -64,9 +64,9 @@ class User implements UserInterface,\Serializable
 
 
 	public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-    }
+	{
+		$this->createdAt = new \DateTime();
+	}
 
     public function getId(): ?int
     {
@@ -75,29 +75,27 @@ class User implements UserInterface,\Serializable
 
 
 	public function getSurname(): ?string
-    {
-        return $this->surname;
-    }
+	{
+		return $this->surname;
+	}
 
 	public function setSurname(string $surname): self
-    {
-        $this->surname = $surname;
-    
-        return $this;
-    }
+	{
+		$this->surname = $surname;
+		 return $this;
+	}
 
 
 	public function getFirstname(): ?string
-    {
-        return $this->firstname;
-    }
+	{
+		return $this->firstname;
+	}
 
 	public function setFirstname(string $firstname): self
-    {
-        $this->firstname = $firstname;
-    
-        return $this;
-    }
+	{
+		$this->firstname = $firstname;
+		return $this;
+	}
 
 
     public function getEmail(): ?string
@@ -108,33 +106,31 @@ class User implements UserInterface,\Serializable
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
         return $this;
     }
 
 
 	public function getPhonenumber(): ?string
-    {
-        return $this->phonenumber;
-    }
+	{
+		return $this->phonenumber;
+	 }
 
 	public function setPhonenumber(string $phonenumber): self
-    {
-        $this->phonenumber = $phonenumber;
-    
-        return $this;
-    }
+	{
+		$this->phonenumber = $phonenumber;
+		return $this;
+	}
 
 
 	public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
+	{
+		return $this->createdAt;
+	}
 
 	public function setCreatedAt($createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
+	{
+	 $this->createdAt = $createdAt;
+	}
 
     /**
      * A visual identifier that represents this user.
@@ -153,7 +149,7 @@ class User implements UserInterface,\Serializable
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_ADMIN';
+        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
@@ -161,7 +157,6 @@ class User implements UserInterface,\Serializable
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
-
         return $this;
     }
 
@@ -176,7 +171,6 @@ class User implements UserInterface,\Serializable
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
         return $this;
     }
 
@@ -235,13 +229,13 @@ class User implements UserInterface,\Serializable
 	 * @since 5.1.0
 	 */
 	public function serialize()
-    {
-        return serialize([
-            $this->id,
-            $this->email,
-            $this->password
-        ]);
-    }
+	 {
+		 return serialize([
+			 $this->id,
+			 $this->email,
+			 $this->password
+		 ]);
+	 }
 
 	/**
 	 * Constructs the object
@@ -253,12 +247,13 @@ class User implements UserInterface,\Serializable
 	 * @since 5.1.0
 	 */
 	public function unserialize($serialized)
-    {
-        list(
-            $this->id,
-            $this->email,
-            $this->password
-            ) = unserialize($serialized, ['allowed_classes' => false]);
-    }
+	 {
+		 list(
+			 $this->id,
+			 $this->email,
+			 $this->password
+			 ) = unserialize($serialized, ['allowed_classes' => false]);
+	 }
+
 
 }

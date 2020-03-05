@@ -40,7 +40,6 @@ class Trick
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="trick", cascade={"persist"})
-	 * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;
 
@@ -88,14 +87,14 @@ class Trick
 
 
 	public function getCreatedAt()
-               	{
-               		return $this->createdAt;
-               	}
+	{
+		return $this->createdAt;
+	}
 
 	public function setCreatedAt($createdAt): void
-               	{
-               		$this->createdAt = $createdAt;
-               	}
+	{
+		$this->createdAt = $createdAt;
+	}
 
     public function getCategory(): ?Category
     {
@@ -105,7 +104,6 @@ class Trick
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
-
         return $this;
     }
 
@@ -145,7 +143,6 @@ class Trick
     public function setPicture(?Picture $picture): self
     {
         $this->picture = $picture;
-
         return $this;
     }
 
