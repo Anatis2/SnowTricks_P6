@@ -14,30 +14,30 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-	/**
-	 * @Route("/inscription", name="registration")
-	 */
-	public function registration(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
-	{
-		$user = new User();
+    /**
+     * @Route("/inscription", name="registration")
+     */
+    public function registration(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
+    {
+        $user = new User();
 
-		$registrationForm = $this->createForm(RegistrationType::class, $user);
+        $registrationForm = $this->createForm(RegistrationType::class, $user);
 
-		$registrationForm->handleRequest($request);
+        $registrationForm->handleRequest($request);
 
-		if($registrationForm->isSubmitted() && $registrationForm->isValid()) {
-			$password = $encoder->encodePassword($user, $user->getPassword());
-			$user->setPassword($password);
-			$manager->persist($user);
-			$manager->flush();
-			$this->addFlash('success', 'Votre inscription a bien été prise en compte ! <br/> Vous pouvez vous connecter ;-)');
-			return $this->redirectToRoute('login');
-		}
+        if ($registrationForm->isSubmitted() && $registrationForm->isValid()) {
+            $password = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
+            $manager->persist($user);
+            $manager->flush();
+            $this->addFlash('success', 'Votre inscription a bien été prise en compte ! <br/> Vous pouvez vous connecter ;-)');
+            return $this->redirectToRoute('login');
+        }
 
-		return $this->render('security/registration.html.twig', [
-			'registrationForm' => $registrationForm->createView()
-		]);
-	}
+        return $this->render('security/registration.html.twig', [
+            'registrationForm' => $registrationForm->createView()
+        ]);
+    }
 
     /**
      * @Route("/login", name="login")
@@ -50,9 +50,9 @@ class SecurityController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', [
-        	'last_username' => $lastUsername,
-			'error' => $error
-		]);
+            'last_username' => $lastUsername,
+            'error' => $error
+        ]);
     }
 
     /**

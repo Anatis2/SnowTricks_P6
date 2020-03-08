@@ -20,11 +20,11 @@ class Picture
      */
     private $id;
 
-	/**
-	 * @Vich\UploadableField(mapping="property_picture", fileNameProperty="fileName")
-	 * @var File|null
-	 */
-	private $imageFile;
+    /**
+     * @Vich\UploadableField(mapping="property_picture", fileNameProperty="fileName")
+     * @var File|null
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -38,7 +38,7 @@ class Picture
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Trick", inversedBy="pictures")
-	 * @ORM\JoinColumn(nullable=false, name="trick_id", referencedColumnName="id")
+     * @ORM\JoinColumn(nullable=false, name="trick_id", referencedColumnName="id")
      */
     private $trick;
 
@@ -47,47 +47,47 @@ class Picture
         return $this->id;
     }
 
-	/**
-	 * @return File|null
-	 */
-	public function getImageFile(): ?File
-	{
-		return $this->imageFile;
+    /**
+     * @return File|null
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * @param File|null $imageFile
-	 */
-	public function setImageFile(?File $imageFile): void
-	{
-		$this->imageFile = $imageFile;
-	}
+    /**
+     * @param File|null $imageFile
+     */
+    public function setImageFile(?File $imageFile): void
+    {
+        $this->imageFile = $imageFile;
+    }
 
-	/**
-	 * @return string|null
-	 */
-	public function getFileName(): ?string
-	{
-		return $this->fileName;
+    /**
+     * @return string|null
+     */
+    public function getFileName(): ?string
+    {
+        return $this->fileName;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * @param string|null $fileName
-	 */
-	public function setFileName(?string $fileName): void
-	{
-		$this->fileName = $fileName;
-	}
+    /**
+     * @param string|null $fileName
+     */
+    public function setFileName(?string $fileName): void
+    {
+        $this->fileName = $fileName;
+    }
 
     public function getLink(): ?string
     {
         return $this->link;
 
-		return $this;
+        return $this;
     }
 
     public function setLink(string $link): self
@@ -120,5 +120,4 @@ class Picture
 
         return $this;
     }
-
 }

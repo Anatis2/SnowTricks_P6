@@ -16,42 +16,41 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TrickController extends AbstractController
 {
-	/**
-	 * @Route("/", name="home")
-	 */
-	public function home(TrickRepository $repo, PaginatorInterface $paginator, Request $request)
-	{
-		$tricks = $paginator->paginate(
-			$repo->findAll(),
-			$request->query->getInt('page', 1),
-			15
-		);
+    /**
+     * @Route("/", name="home")
+     */
+    public function home(TrickRepository $repo, PaginatorInterface $paginator, Request $request)
+    {
+        $tricks = $paginator->paginate(
+            $repo->findAll(),
+            $request->query->getInt('page', 1),
+            15
+        );
 
-		return $this->render('tricks/home.html.twig', [
-			'tricks' => $tricks
-		]);
-	}
+        return $this->render('tricks/home.html.twig', [
+            'tricks' => $tricks
+        ]);
+    }
 
-	/**
-	 * @Route("/figure/{id}", name="showTrick")
-	 */
-	public function show(Trick $trick, Request $request, EntityManagerInterface $manager)
-	{
-		$message = new Message($trick);
+    /**
+     * @Route("/figure/{id}", name="showTrick")
+     */
+    public function show(Trick $trick, Request $request, EntityManagerInterface $manager)
+    {
+        $message = new Message($trick);
 
-		$form = $this->createForm(MessageType::class, $message);
-		$form->handleRequest($request);
+        $form = $this->createForm(MessageType::class, $message);
+        $form->handleRequest($request);
 
-		if ($form->isSubmitted() && $form->isValid()) {
-			$message->setUser($this->getUser());
-			$manager->persist($message);
-			$manager->flush();
-		}
+        if ($form->isSubmitted() && $form->isValid()) {
+            $message->setUser($this->getUser());
+            $manager->persist($message);
+            $manager->flush();
+        }
 
-		return $this->render('tricks/showTrick.html.twig', [
-			'trick' => $trick,
-			'form' => $form->createView()
-		]);
-	}
-
+        return $this->render('tricks/showTrick.html.twig', [
+            'trick' => $trick,
+            'form' => $form->createView()
+        ]);
+    }
 }

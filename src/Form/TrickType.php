@@ -19,15 +19,15 @@ class TrickType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('category', EntityType::class, [
-            	'class' => Category::class,
-				'choice_label' => 'name'
-			])
-			->add('pictures', CollectionType::class, [
+                'class' => Category::class,
+                'choice_label' => 'name'
+            ])
+            ->add('pictures', CollectionType::class, [
                 'entry_type' => PictureType::class,
                 'required' => false,
-				'allow_add' => true,
-				'allow_delete' => true
-			]);
+                'allow_add' => true,
+                'allow_delete' => true
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

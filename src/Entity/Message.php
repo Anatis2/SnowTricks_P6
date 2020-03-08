@@ -42,7 +42,9 @@ class Message
 
     public function __construct($trick = null)
     {
-    	if ($trick !== null) $this->trick = $trick;
+        if ($trick !== null) {
+            $this->trick = $trick;
+        }
         $this->createdAt = new \DateTime();
     }
 
@@ -87,21 +89,19 @@ class Message
         return $this;
     }
 
-	/**
-	 * @return mixed
-	 */
-	public function getUser()
-	{
-		return $this->user;
-	}
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 
-	/**
-	 * @param mixed $user
-	 */
-	public function setUser($user): void
-	{
-		$this->user = $user;
-	}
-
-
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
+    {
+        $this->user = $user;
+    }
 }

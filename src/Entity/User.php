@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User implements UserInterface,\Serializable
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -20,31 +20,31 @@ class User implements UserInterface,\Serializable
      */
     private $id;
 
-	/**
-	 * @ORM\Column(type="string", length=255, unique=false)
-	 */
-	private $surname;
+    /**
+     * @ORM\Column(type="string", length=255, unique=false)
+     */
+    private $surname;
 
-	/**
-	 * @ORM\Column(type="string", length=255, unique=false)
-	 */
-	private $firstname;
+    /**
+     * @ORM\Column(type="string", length=255, unique=false)
+     */
+    private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-	 * @Assert\Email(message="Veuillez taper un email valide")
+     * @Assert\Email(message="Veuillez taper un email valide")
      */
     private $email;
 
-	/**
-	 * @ORM\Column(type="string", length=255, unique=false, nullable=true)
-	 */
-	private $phonenumber;
+    /**
+     * @ORM\Column(type="string", length=255, unique=false, nullable=true)
+     */
+    private $phonenumber;
 
-	/**
-	 * @ORM\Column(type="datetime")
-	 */
-	private $createdAt;
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
 
     /**
      * @ORM\Column(type="json")
@@ -63,10 +63,10 @@ class User implements UserInterface,\Serializable
     private $messages;
 
 
-	public function __construct()
-	{
-		$this->createdAt = new \DateTime();
-	}
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -74,28 +74,28 @@ class User implements UserInterface,\Serializable
     }
 
 
-	public function getSurname(): ?string
-	{
-		return $this->surname;
-	}
+    public function getSurname(): ?string
+    {
+        return $this->surname;
+    }
 
-	public function setSurname(string $surname): self
-	{
-		$this->surname = $surname;
-		 return $this;
-	}
+    public function setSurname(string $surname): self
+    {
+        $this->surname = $surname;
+        return $this;
+    }
 
 
-	public function getFirstname(): ?string
-	{
-		return $this->firstname;
-	}
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
 
-	public function setFirstname(string $firstname): self
-	{
-		$this->firstname = $firstname;
-		return $this;
-	}
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+        return $this;
+    }
 
 
     public function getEmail(): ?string
@@ -110,27 +110,27 @@ class User implements UserInterface,\Serializable
     }
 
 
-	public function getPhonenumber(): ?string
-	{
-		return $this->phonenumber;
-	 }
+    public function getPhonenumber(): ?string
+    {
+        return $this->phonenumber;
+    }
 
-	public function setPhonenumber(string $phonenumber): self
-	{
-		$this->phonenumber = $phonenumber;
-		return $this;
-	}
+    public function setPhonenumber(string $phonenumber): self
+    {
+        $this->phonenumber = $phonenumber;
+        return $this;
+    }
 
 
-	public function getCreatedAt()
-	{
-		return $this->createdAt;
-	}
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
 
-	public function setCreatedAt($createdAt): void
-	{
-	 $this->createdAt = $createdAt;
-	}
+    public function setCreatedAt($createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
 
     /**
      * A visual identifier that represents this user.
@@ -175,7 +175,7 @@ class User implements UserInterface,\Serializable
     }
 
     /**
-     * 
+     *
      */
     public function getMessages(): Collection
     {
@@ -222,38 +222,36 @@ class User implements UserInterface,\Serializable
         // $this->plainPassword = null;
     }
 
-	/**
-	 * String representation of object
-	 * @link https://php.net/manual/en/serializable.serialize.php
-	 * @return string the string representation of the object or null
-	 * @since 5.1.0
-	 */
-	public function serialize()
-	 {
-		 return serialize([
-			 $this->id,
-			 $this->email,
-			 $this->password
-		 ]);
-	 }
+    /**
+     * String representation of object
+     * @link https://php.net/manual/en/serializable.serialize.php
+     * @return string the string representation of the object or null
+     * @since 5.1.0
+     */
+    public function serialize()
+    {
+        return serialize([
+             $this->id,
+             $this->email,
+             $this->password
+         ]);
+    }
 
-	/**
-	 * Constructs the object
-	 * @link https://php.net/manual/en/serializable.unserialize.php
-	 * @param string $serialized <p>
-	 * The string representation of the object.
-	 * </p>
-	 * @return void
-	 * @since 5.1.0
-	 */
-	public function unserialize($serialized)
-	 {
-		 list(
-			 $this->id,
-			 $this->email,
-			 $this->password
-			 ) = unserialize($serialized, ['allowed_classes' => false]);
-	 }
-
-
+    /**
+     * Constructs the object
+     * @link https://php.net/manual/en/serializable.unserialize.php
+     * @param string $serialized <p>
+     * The string representation of the object.
+     * </p>
+     * @return void
+     * @since 5.1.0
+     */
+    public function unserialize($serialized)
+    {
+        list(
+             $this->id,
+             $this->email,
+             $this->password
+             ) = unserialize($serialized, ['allowed_classes' => false]);
+    }
 }

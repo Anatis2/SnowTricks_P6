@@ -28,10 +28,10 @@ class Trick
      */
     private $description;
 
-	/**
-	 * @ORM\Column(type="datetime")
-	 */
-	private $createdAt;
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="tricks")
@@ -51,7 +51,7 @@ class Trick
 
     public function __construct()
     {
-		$this->createdAt = new \DateTime();
+        $this->createdAt = new \DateTime();
         $this->pictures = new ArrayCollection();
         $this->messages = new ArrayCollection();
     }
@@ -86,15 +86,15 @@ class Trick
     }
 
 
-	public function getCreatedAt()
-	{
-		return $this->createdAt;
-	}
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
 
-	public function setCreatedAt($createdAt): void
-	{
-		$this->createdAt = $createdAt;
-	}
+    public function setCreatedAt($createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
 
     public function getCategory(): ?Category
     {

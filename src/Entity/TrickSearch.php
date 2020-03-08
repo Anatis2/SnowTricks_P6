@@ -3,8 +3,6 @@
 
 namespace App\Entity;
 
-
 class TrickSearch
 {
-
 }
