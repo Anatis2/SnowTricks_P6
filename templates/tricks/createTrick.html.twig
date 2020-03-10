@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Créer une figure{% endblock %}
+
+{% block body %}
+    <h1>Création d'une figure</h1>
+
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.category, {'label': 'Catégorie'}) }}
+    {{ form_row(form.name, {'label': 'Nom de la figure'}) }}
+    {{ form_row(form.description, {'label': 'Description de la figure'}) }}
+
+    <button type="submit" class="btn btn-primary">Ajouter la figure</button>
+
+    {{ form_end(form) }}
+
+{% endblock %}

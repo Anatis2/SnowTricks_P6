@@ -62,6 +62,11 @@ class User implements UserInterface, \Serializable
      */
     private $messages;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="user")
+     */
+    private $tricks;
+
 
     public function __construct()
     {
@@ -174,12 +179,14 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    /**
-     *
-     */
     public function getMessages(): Collection
     {
         return $this->messages;
+    }
+
+    public function getTricks(): Collection
+    {
+        return $this->tricks;
     }
 
     public function addMessage(Message $message): self

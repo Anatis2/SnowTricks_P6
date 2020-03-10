@@ -89,19 +89,15 @@ class Message
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getUser()
     {
         return $this->user;
     }
 
-    /**
-     * @param mixed $user
-     */
-    public function setUser($user): void
+    public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
     }
 }

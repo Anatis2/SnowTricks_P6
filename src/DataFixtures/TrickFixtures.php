@@ -3,7 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
+use App\Entity\User;
 use App\Entity\Trick;
+use App\Repository\TrickRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -11,104 +14,118 @@ class TrickFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-		$categoriesDatas = [
-			"Grabs" =>
-				[
-					[ "name" => "Mute",
-					  "description" => "Le mute fait partie de la catégorie des grabs, qui consistent à attraper la planche avec la main pendant le saut.
-		  					Le verbe anglais to grab signifie « attraper. »
-		  					Le mute se fait par une saisie de la carre frontside de la planche entre les deux pieds avec la main avant."
-					],
-					[ "name" => "Indy",
-					  "description" => "Saisie de la carre frontside de la planche, entre les deux pieds, avec la main arrière."
-					],
-					[ "name" => "test",
-					  "description" => "test"
-					],
-					[ "name" => "ex 2 figures",
-					  "description" => "ex 2 figures"
-					],
-					[ "name" => "figuretest",
-					  "description" => "bidule"
-					],
-					[ "name" => "atre",
-					  "description" => "a"
-					],
-					[ "name" => "dfdf",
-					  "description" => "bidule"
-					]
+		$tricksDatas = 
+			[
+				[ "name" => "Mute",
+					"description" => "Le mute fait partie de la catégorie des grabs, qui consistent à attraper la planche avec la main pendant le saut.
+									Le verbe anglais to grab signifie « attraper. »
+									Le mute se fait par une saisie de la carre frontside de la planche entre les deux pieds avec la main avant.",
+					"category" => "Grabs",
+					"user" => "admin@admin.fr"
 				],
-			"Rotations" =>
-				[
-					[ "name" => "180",
-						"description" => "Le 180 désigne un demi-tour, soit 180 degrés d'angle."
-					],
-					[ "name" => "360",
-						"description" => "Trois six pour un tour complet."
-					],
-					[ "name" => "540",
-						"description" => "Cinq quatre pour un tour et demi."
-					],
-					[ "name" => "720",
-						"description" => "Sept deux pour deux tours complets."
-					]
+				[ "name" => "Indy",
+					"description" => "Saisie de la carre frontside de la planche, entre les deux pieds, avec la main arrière.",
+					"category" => "Grabs",
+					"user" => "admin@admin.fr"
 				],
-			"Flips" =>
-				[
-					[ "name" => "Front flip",
-					  "description" => "Un front flip correspond à une rotation avant.
-		  					Il est possible de faire plusieurs flips à la suite, et d'ajouter un grab à la rotation.
-		  					Les flips agrémentés d'une vrille existent aussi (Mac Twist, Hakon Flip, ...), mais de manière beaucoup plus rare, et se confondent souvent avec certaines rotations horizontales désaxées.
-		  					Néanmoins, en dépit de la difficulté technique relative d\'une telle figure, le danger de retomber sur la tête ou la nuque est réel et conduit certaines stations de ski à interdire de telles figures dans ses snowparks."
-					],
-					[ "name" => "Test figure flip",
-					  "description" => "flip"
-					]
+				[ "name" => "test",
+					"description" => "test",
+					"category" => "Grabs",
+					"user" => "admin@admin.fr"
 				],
-			"Rotations désaxées" =>
-				[
-					[ "name" => "",
-					  "description" => ""
-					]
+				[ "name" => "ex 2 figures",
+					"description" => "ex 2 figures",
+					"category" => "Grabs",
+					"user" => "admin@admin.fr"
 				],
-			"Slides" =>
-				[
-					[ "name" => "Nose slide",
-					  "description" => "On glisse avec l'avant de la planche sur la barre."
-					]
+				[ "name" => "figuretest",
+					"description" => "bidule",
+					"category" => "Grabs",
+					"user" => "admin@admin.fr"
 				],
-			"One foot tricks" =>
-				[
-					[ "name" => "",
-					  "description" => ""
-					]
+				[ "name" => "atre",
+					"description" => "a",
+					"category" => "Grabs",
+					"user" => "admin@admin.fr"
 				],
-			"Old school" =>
-				[
-					[ "name" => "Backside Air",
-					  "description" => "A compléter"
-					],
-					[ "name" => "Method Air",
-					  "description" => "A compléter"
-					]
+				[ "name" => "dfdf",
+					"description" => "bidule",
+					"category" => "Grabs",
+					"user" => "admin@admin.fr"
+				],
+				[ "name" => "180",
+					"description" => "Le 180 désigne un demi-tour, soit 180 degrés d'angle.",
+					"category" => "Rotations",
+					"user" => "admin@admin.fr"
+				],
+				[ "name" => "360",
+					"description" => "Trois six pour un tour complet.",
+					"category" => "Rotations",
+					"user" => "admin@admin.fr"
+				],
+				[ "name" => "540",
+					"description" => "Cinq quatre pour un tour et demi.",
+					"category" => "Rotations",
+					"user" => "admin@admin.fr"
+				],
+				[ "name" => "720",
+					"description" => "Sept deux pour deux tours complets.",
+					"category" => "Rotations",
+					"user" => "admin@admin.fr"
+				],
+				[ "name" => "Front flip",
+					"description" => "Un front flip correspond à une rotation avant.
+						Il est possible de faire plusieurs flips à la suite, et d'ajouter un grab à la rotation.
+						Les flips agrémentés d'une vrille existent aussi (Mac Twist, Hakon Flip, ...), mais de manière beaucoup plus rare, et se confondent souvent avec certaines rotations horizontales désaxées.
+						Néanmoins, en dépit de la difficulté technique relative d\'une telle figure, le danger de retomber sur la tête ou la nuque est réel et conduit certaines stations de ski à interdire de telles figures dans ses snowparks.",
+					"category" => "Flips",
+					"user" => "admin@admin.fr"
+				],
+				[ "name" => "Test figure flip",
+					"description" => "flip",
+					"category" => "Flips",
+					"user" => "admin@admin.fr"
+				],
+				[ "name" => "",
+					"description" => "",
+					"category" => "Rotations désaxées",
+					"user" => "admin@admin.fr"
+				],
+				[ "name" => "Nose slide",
+					"description" => "On glisse avec l'avant de la planche sur la barre.",
+					"category" => "Slides",
+					"user" => "admin@admin.fr"
+				],
+				[ "name" => "",
+					"description" => "",
+					"category" => "One foot tricks",
+					"user" => "admin@admin.fr"
+				],
+				[ "name" => "Backside Air",
+					"description" => "A compléter",
+					"category" => "Old school",
+					"user" => "admin@admin.fr"
+				],
+				[ "name" => "Method Air",
+					"description" => "A compléter",
+					"category" => "Old school",
+					"user" => "admin@admin.fr"
 				]
-		];
+			];
 
-		foreach($categoriesDatas as $key => $categoryDatas) {
+		foreach($tricksDatas as $k => $v) {
 
-			$category = new Category();
-			$category->setName($key);
-
-			$manager->persist($category);
-
-			foreach($categoryDatas as $k => $v) {
 				$trick = new Trick();
-				$trick->setCategory($category)
+				$category = $manager->getRepository(Category::class)->findOneBy(["name" => $v['category']]);
+				$user = $manager->getRepository(User::class)->findOneBy(["email" => $v['user']]);
+
+				$trick
 					->setName($v['name'])
-					->setDescription($v['description']);
+					->setDescription($v['description'])
+					->setCategory($category)
+					->setUser($user);
 
 				$manager->persist($trick);
-			}
 		}
 
         $manager->flush();
