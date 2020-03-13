@@ -33,6 +33,11 @@ class Trick
      */
     private $createdAt;
 
+	/**
+	 * @ORM\Column(type="string", length=255, nullable=true)
+	 */
+	private $pictureFilename;
+
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="tricks")
      */
@@ -52,7 +57,6 @@ class Trick
     public function __construct()
     {
         $this->createdAt = new \DateTime();
-        $this->pictures = new ArrayCollection();
         $this->messages = new ArrayCollection();
     }
 
@@ -94,6 +98,17 @@ class Trick
     {
         $this->createdAt = $createdAt;
     }
+
+	public function getPictureFilename()
+	{
+		return $this->pictureFilename;
+	}
+
+	public function setPictureFilename($pictureFilename): void
+	{
+		$this->pictureFilename = $pictureFilename;
+	}
+
 
     public function getCategory(): ?Category
     {
