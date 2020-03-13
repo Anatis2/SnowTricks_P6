@@ -39,11 +39,6 @@ class Trick
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="trick", cascade={"persist"})
-     */
-    private $pictures;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="trick")
      */
     private $messages;
@@ -119,45 +114,6 @@ class Trick
     public function setUser(?User $user): self
     {
         $this->user = $user;
-        return $this;
-    }
-
-    /**
-     * @return Collection|Picture[]
-     */
-    public function getPictures(): Collection
-    {
-        return $this->pictures;
-    }
-
-    public function addPicture(Picture $picture): self
-    {
-        if (!$this->pictures->contains($picture)) {
-            $this->pictures[] = $picture;
-            $picture->addTrick($this);
-        }
-
-        return $this;
-    }
-
-    public function removePicture(Picture $picture): self
-    {
-        if ($this->pictures->contains($picture)) {
-            $this->pictures->removeElement($picture);
-            $picture->removeTrick($this);
-        }
-
-        return $this;
-    }
-
-    public function getPicture(): ?Picture
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(?Picture $picture): self
-    {
-        $this->picture = $picture;
         return $this;
     }
 

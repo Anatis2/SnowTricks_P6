@@ -11,11 +11,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/admin")
+ */
 class AdminTrickController extends AbstractController
 {
 
     /**
-     * @Route("admin/creation", name="createTrick")
+     * @Route("/creation", name="createTrick")
      */
     public function createTrick(Request $request, EntityManagerInterface $manager)
     {
@@ -26,9 +29,6 @@ class AdminTrickController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            foreach ($trick->getPictures() as $k => $picture) {
-                $picture->setTrick($trick);
-            }
             $manager->persist($trick);
             $manager->flush();
 
@@ -36,27 +36,27 @@ class AdminTrickController extends AbstractController
             return $this->redirectToRoute('adminHome');
         }
 
-        return $this->render('admin/admin_createTrick.html.twig', [
+        return $this->render('admin/adminCreateTrick.html.twig', [
             'form' => $form->createView()
         ]);
     }
 
 
     /**
-     * @Route("admin/administration", name="adminHome")
+     * @Route("/administration", name="adminHome")
      */
     public function adminHome(TrickRepository $repo)
     {
         $tricks = $repo->findAll();
 
-        return $this->render('admin/admin_home.html.twig', [
+        return $this->render('admin/adminHome.html.twig', [
             'tricks' => $tricks
         ]);
     }
 
 
     /**
-     * @Route("admin/edition/{id}", name="editTrick")
+     * @Route("/edition/{id}", name="editTrick")
      */
     public function editTrick(Trick $trick, Request $request, EntityManagerInterface $manager)
     {
@@ -70,13 +70,13 @@ class AdminTrickController extends AbstractController
             return $this->redirectToRoute('adminHome');
         }
 
-        return $this->render('admin/admin_editTrick.html.twig', [
+        return $this->render('admin/adminEditTrick.html.twig', [
             'form' => $form->createView()
         ]);
     }
 
     /**
-     * @Route("admin/suppression/{id}", name="deleteTrick")
+     * @Route("/suppression/{id}", name="deleteTrick")
      */
     public function deleteTrick(Trick $trick, Request $request, EntityManagerInterface $manager)
     {

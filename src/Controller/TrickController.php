@@ -11,7 +11,9 @@ use App\Repository\TrickRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TrickController extends AbstractController
@@ -33,7 +35,10 @@ class TrickController extends AbstractController
     }
 
     /**
-     * @Route("/figure/{id}", name="showTrick")
+     * @Route("/figure/{id}", name="showTrick",
+	 *     requirements={"id" = "\d+"},
+	 *	   defaults={"id" = 1}
+	 * )
      */
     public function show(Trick $trick, Request $request, EntityManagerInterface $manager)
     {
@@ -53,4 +58,5 @@ class TrickController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
 }

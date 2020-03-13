@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Modifier une figure{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <h1>Modification d'une figure</h1>
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.category, {'label': 'Catégorie'}) }}
+        {{ form_row(form.name, {'label': 'Nom de la figure'}) }}
+        {{ form_row(form.description, {'label': 'Description de la figure'}) }}
+
+        <button type="submit" class="btn btn-primary">Modifier la figure</button>
+
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}
