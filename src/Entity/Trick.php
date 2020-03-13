@@ -53,11 +53,17 @@ class Trick
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="trick")
+     */
+    private $pictures;
+
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->messages = new ArrayCollection();
+        $this->pictures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -100,14 +106,14 @@ class Trick
     }
 
 	public function getPictureFilename()
-	{
-		return $this->pictureFilename;
-	}
+               	{
+               		return $this->pictureFilename;
+               	}
 
 	public function setPictureFilename($pictureFilename): void
-	{
-		$this->pictureFilename = $pictureFilename;
-	}
+               	{
+               		$this->pictureFilename = $pictureFilename;
+               	}
 
 
     public function getCategory(): ?Category
@@ -157,6 +163,37 @@ class Trick
             // set the owning side to null (unless already changed)
             if ($message->getTrick() === $this) {
                 $message->setTrick(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Picture[]
+     */
+    public function getPictures(): Collection
+    {
+        return $this->pictures;
+    }
+
+    public function addPicture(Picture $picture): self
+    {
+        if (!$this->pictures->contains($picture)) {
+            $this->pictures[] = $picture;
+            $picture->setTrick($this);
+        }
+
+        return $this;
+    }
+
+    public function removePicture(Picture $picture): self
+    {
+        if ($this->pictures->contains($picture)) {
+            $this->pictures->removeElement($picture);
+            // set the owning side to null (unless already changed)
+            if ($picture->getTrick() === $this) {
+                $picture->setTrick(null);
             }
         }
 

@@ -2,6 +2,7 @@
 
 namespace App\Controller\admin;
 
+use App\Entity\Picture;
 use App\Entity\Trick;
 use App\Form\TrickType;
 use App\Repository\TrickRepository;
@@ -46,11 +47,16 @@ class AdminTrickController extends AbstractController
 				} catch (FileException $e) {
 					return new Response("Il y a eu un problème lors du déplacement du fichier vers le dépôt");
 				}
-				$trick->setPictureFilename($newPictureFileName); // on met à jour le contenu de la propriété $pictureFileName de notre entité Trick
 			}
 
             $manager->persist($trick);
             $manager->flush();
+
+            $picture = new Picture();
+            $picture->setTrick($trick);
+            $picture->setName($newPictureFileName); // on met à jour le contenu de la propriété $pictureFileName de notre entité Trick
+			$manager->persist($picture);
+			$manager->flush();
 
             $this->addFlash('success', 'La figure a été créée avec succès !');
             return $this->redirectToRoute('adminHome');
