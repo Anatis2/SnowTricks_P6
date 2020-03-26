@@ -6,13 +6,12 @@ use App\Entity\Picture;
 use App\Entity\Trick;
 use App\Form\TrickType;
 use App\Repository\TrickRepository;
+use App\Services\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/admin")
@@ -23,40 +22,34 @@ class AdminTrickController extends AbstractController
     /**
      * @Route("/creation", name="createTrick")
      */
-    public function createTrick(Request $request, EntityManagerInterface $manager)
+    public function createTrick(Request $request, EntityManagerInterface $manager, FileUploader $fileUploader)
     {
         $trick = new Trick();
         $form = $this->createForm(TrickType::class, $trick);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+			$manager->persist($trick);
+
 			/**
-			 * @var UploadedFile $pictureFile
+			 * @var UploadedFile $pictureFiles
 			 */
-        	$pictureFile = $form->get('picture')->getData(); // On créée la variable $pictureFile, que l'on récupère de TrickType, et qui est de type UploadedFile
+        	$pictureFiles = $form->get('pictures')->getData(); // On récupère les éventuelles données de type UploadedFile (@var UploadedFile $pictureFiles), grâce à 'picture', qui provient de TrickType
 
-			if ($pictureFile) { // Si le champ 'picture' a été rempli (et donc si $pictureFile existe)
-				$originalPictureFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME); // Alors, on récupère le nom original de l'image, grâce à son chemin d'accès
-				$safePictureFileName = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalPictureFilename); // On transforme le nom original en nom sécurisé
-				$newPictureFileName = $safePictureFileName.'-'.uniqid().'.'.$pictureFile->guessExtension(); // On donne un nom final complet à notre fichier (comprenant un id unique, son extension, ...)
-				try {
-					$pictureFile->move( // On envoie le fichier $newPictureFileName vers le dossier 'public/images'
-						$this->getParameter('pictures_directory'),
-						$newPictureFileName
-					);
-				} catch (FileException $e) {
-					return new Response("Il y a eu un problème lors du déplacement du fichier vers le dépôt");
+			if ($pictureFiles) { // Si le champ 'picture' a été rempli (et donc si $pictureFiles existe)
+				foreach($pictureFiles as $pictureFile) {
+					$pictureFilename = $fileUploader->upload($pictureFile); // Alors on appelle le service FileUploader (via l'objet $fileUploader), que l'on stocke dans une variable ($pictureFilename)
+
+					$picture = new Picture();
+					$picture->setTrick($trick);
+					$picture->setName($pictureFilename);
+
+					$manager->persist($picture);
+					$manager->flush();
 				}
+
 			}
-
-            $manager->persist($trick);
-            $manager->flush();
-
-            $picture = new Picture();
-            $picture->setTrick($trick);
-            $picture->setName($newPictureFileName); // on met à jour le contenu de la propriété $pictureFileName de notre entité Trick
-			$manager->persist($picture);
-			$manager->flush();
 
             $this->addFlash('success', 'La figure a été créée avec succès !');
             return $this->redirectToRoute('adminHome');

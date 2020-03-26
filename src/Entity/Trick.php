@@ -33,11 +33,6 @@ class Trick
      */
     private $createdAt;
 
-	/**
-	 * @ORM\Column(type="string", length=255, nullable=true)
-	 */
-	private $pictureFilename;
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="tricks")
      */
@@ -54,7 +49,7 @@ class Trick
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="trick")
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="trick", cascade={"persist"})
      */
     private $pictures;
 
@@ -104,17 +99,6 @@ class Trick
     {
         $this->createdAt = $createdAt;
     }
-
-	public function getPictureFilename()
-               	{
-               		return $this->pictureFilename;
-               	}
-
-	public function setPictureFilename($pictureFilename): void
-               	{
-               		$this->pictureFilename = $pictureFilename;
-               	}
-
 
     public function getCategory(): ?Category
     {

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PictureRepository")
@@ -16,10 +17,15 @@ class Picture
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
+	/**
+	 * @ORM\Column(type="string", length=255)
+	 */
+    private $url;
+
+	/**
+	 * @ORM\Column(type="string", length=255)
+	 */
+    private $alt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Trick", inversedBy="pictures")
@@ -32,17 +38,26 @@ class Picture
         return $this->id;
     }
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
 
-    public function setName(string $name): self
-    {
-        $this->name = $name;
+	public function getUrl()
+	{
+		return $this->url;
+	}
 
-        return $this;
-    }
+	public function setUrl($url)
+	{
+		$this->url = $url;
+	}
+
+	public function getAlt()
+	{
+		return $this->alt;
+	}
+
+	public function setAlt($alt): void
+	{
+		$this->alt = $alt;
+	}
 
     public function getTrick(): ?Trick
     {
@@ -52,7 +67,6 @@ class Picture
     public function setTrick(?Trick $trick): self
     {
         $this->trick = $trick;
-
         return $this;
     }
 }
