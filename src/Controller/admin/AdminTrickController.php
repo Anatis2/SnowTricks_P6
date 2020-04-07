@@ -30,26 +30,18 @@ class AdminTrickController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-			$manager->persist($trick);
-
 			/**
-			 * @var UploadedFile $pictureFiles
+			 * @var UploadedFile $pictureFile
 			 */
-        	$pictureFiles = $form->get('pictures')->getData(); // On récupère les éventuelles données de type UploadedFile (@var UploadedFile $pictureFiles), grâce à 'picture', qui provient de TrickType
+        	$pictureFile = $form->get('pictureFile')->getData(); // On récupère les éventuelles données de type UploadedFile (@var UploadedFile $pictureFiles), grâce à 'picture', qui provient de TrickType
 
-			if ($pictureFiles) { // Si le champ 'picture' a été rempli (et donc si $pictureFiles existe)
-				foreach($pictureFiles as $pictureFile) {
-					$pictureFilename = $fileUploader->upload($pictureFile); // Alors on appelle le service FileUploader (via l'objet $fileUploader), que l'on stocke dans une variable ($pictureFilename)
-
-					$picture = new Picture();
-					$picture->setTrick($trick);
-					$picture->setName($pictureFilename);
-
-					$manager->persist($picture);
-					$manager->flush();
-				}
-
+			if ($pictureFile) { // Si le champ 'picture' a été rempli (et donc si $pictureFiles existe)
+				$pictureFileName = $fileUploader->upload($pictureFile); // Alors on appelle le service FileUploader (via l'objet $fileUploader), que l'on stocke dans une variable ($pictureFilename)
+				$trick->setPictureFileName($pictureFileName);
 			}
+
+			$manager->persist($trick);
+			$manager->flush();
 
             $this->addFlash('success', 'La figure a été créée avec succès !');
             return $this->redirectToRoute('adminHome');

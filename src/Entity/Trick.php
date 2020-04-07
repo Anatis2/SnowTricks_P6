@@ -48,6 +48,11 @@ class Trick
      */
     private $user;
 
+	/**
+	 * @ORM\Column(type="string", length=255)
+	 */
+    private $pictureFileName;
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="trick", cascade={"persist"})
      */
@@ -121,6 +126,24 @@ class Trick
         $this->user = $user;
         return $this;
     }
+
+	/**
+	 * @return mixed | null
+	 */
+	public function getPictureFileName()
+	{
+		return $this->pictureFileName;
+	}
+
+	/**
+	 * @param mixed $pictureFileName
+	 */
+	public function setPictureFileName($pictureFileName)
+	{
+		$this->pictureFileName = $pictureFileName;
+	}
+
+
 
     /**
      * @return Collection|Message[]

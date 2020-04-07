@@ -17,20 +17,7 @@ class PictureType extends AbstractType
     	$builder
 			->add('url')
 			->add('alt')
-			->add('pictureFile', FileType::class, [
-			'label' => false,
-			'mapped' => false, // on précise que ce champ n'est associé à aucune propriété de l'entité Trick (ni à aucune propriété d'autre entité)
-			'required' => false,
-			'constraints' => [
-				new File([ // le champ picture permettra de créer un objet de type File
-					'maxSize' => '1500k',
-					'mimeTypes' => [
-						'image/png'
-					],
-					'mimeTypesMessage' => 'Seules les images de type PNG sont autorisés'
-				])
-			]
-		]);
+			;
     }
 
     public function configureOptions(OptionsResolver $resolver)
