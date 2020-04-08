@@ -49,7 +49,7 @@ class Trick
     private $user;
 
 	/**
-	 * @ORM\Column(type="string", length=255)
+	 * @ORM\Column(type="string", length=255, nullable=true)
 	 */
     private $pictureFileName;
 
