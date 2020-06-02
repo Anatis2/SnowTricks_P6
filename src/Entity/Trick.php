@@ -48,11 +48,6 @@ class Trick
      */
     private $user;
 
-	/**
-	 * @ORM\Column(type="string", length=255, nullable=true)
-	 */
-    private $pictureFileName;
-
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="trick", cascade={"persist"})
      */

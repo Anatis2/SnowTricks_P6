@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Entity\Picture;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,8 +16,9 @@ class FileUploader
 		$this->targetDirectory = $targetDirectory;
 	}
 
-	public function upload(UploadedFile $uploadedFile)
+	public function upload(Picture $picture)
 	{
+		$uploadedFile = $picture->getFile();
 		$originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME); // On récupère le nom original du fichier, grâce à son chemin d'accès
 		$safeFileName = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename); // On transforme le nom original en nom sécurisé
 		$newFileName = $safeFileName . '-' . uniqid() . '.' . $uploadedFile->guessExtension(); // On donne un nom final complet à notre fichier (comprenant un id unique, son extension, ...)
@@ -29,7 +31,8 @@ class FileUploader
 		} catch (FileException $e) {
 			return new Response("Il y a eu un problème lors du déplacement du fichier vers le dépôt");
 		}
-		return $newFileName;
+
+		$picture->setFilename($newFileName);
 	}
 
 	public function getTargetDirectory()

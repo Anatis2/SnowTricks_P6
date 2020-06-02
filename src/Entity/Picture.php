@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PictureRepository")
@@ -18,9 +19,17 @@ class Picture
     private $id;
 
 	/**
+	 * @Assert\File(
+	 *      maxSize = "1500k",
+			mimeTypes = { "image/png" }
+	 * )
+	 */
+    private $file;
+
+	/**
 	 * @ORM\Column(type="string", length=255, nullable=true)
 	 */
-    private $url;
+    private $filename;
 
 	/**
 	 * @ORM\Column(type="string", length=255, nullable=true)
@@ -38,15 +47,33 @@ class Picture
         return $this->id;
     }
 
-
-	public function getUrl()
+	/**
+	 * @return mixed
+	 */
+	public function getFile()
 	{
-		return $this->url;
+		return $this->file;
 	}
 
-	public function setUrl($url)
+	/**
+	 * @param mixed $file
+	 */
+	public function setFile($file): void
 	{
-		$this->url = $url;
+		$this->file = $file;
+	}
+
+
+
+	public function getFilename()
+	{
+		return $this->filename;
+	}
+
+	public function setFilename($filename)
+	{
+		$this->filename = $filename;
+
 	}
 
 	public function getAlt()

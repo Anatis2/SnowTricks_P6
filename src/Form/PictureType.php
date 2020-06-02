@@ -15,21 +15,11 @@ class PictureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
     	$builder
-			->add('url')
 			->add('alt')
-			->add('pictureFiles', FileType::class, [
+			->add('file', FileType::class, [
 				'label' => false,
-				'mapped' => false, // on précise que ce champ n'est associé à aucune propriété de l'entité Trick (ni à aucune propriété d'autre entité)
+				'mapped' => true,
 				'required' => false,
-				'constraints' => [
-					new File([ // le champ picture permettra de créer un objet de type File
-						'maxSize' => '1500k',
-						'mimeTypes' => [
-							'image/png'
-						],
-						'mimeTypesMessage' => 'Seules les images de type PNG sont autorisés'
-					])
-				]
 			])
 			;
     }
