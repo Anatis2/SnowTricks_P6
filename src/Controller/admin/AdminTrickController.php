@@ -31,16 +31,16 @@ class AdminTrickController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
 			/**
-			 * @var UploadedFile $pictureFile
+			 * @var UploadedFile $pictureFiles
 			 */
-        	$pictureFiles = $form->get('pictureFile')->getData(); // On récupère les éventuelles données de type UploadedFile (@var UploadedFile $pictureFiles), grâce à 'picture', qui provient de TrickType
+        	$pictureFiles = $form->get('pictures')->getData(); // On récupère les éventuelles données de type UploadedFile (@var UploadedFile $pictureFiles), grâce à 'picture', qui provient de TrickType
 
-			foreach ($pictureFiles as $pictureFile) {
+			/*foreach ($pictureFiles as $pictureFile) {
 				if ($pictureFile) { // Si le champ 'picture' a été rempli (et donc si $pictureFiles existe)
 					$pictureFileName = $fileUploader->upload($pictureFile); // Alors on appelle le service FileUploader (via l'objet $fileUploader), que l'on stocke dans une variable ($pictureFilename)
 					$trick->setPictureFileName($pictureFileName);
 				}
-			}
+			}*/
 
 
 			$manager->persist($trick);

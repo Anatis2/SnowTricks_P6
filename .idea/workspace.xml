@@ -5,8 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/admin/AdminTrickController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/admin/AdminTrickController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/PictureType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PictureType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TrickType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TrickType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/adminCreateTrick.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/adminCreateTrick.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Services/FileUploader.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+            <state relative-caret-position="684">
+              <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
               <folding>
                 <element signature="e#32#98#0#PHP" expanded="true" />
               </folding>
@@ -43,10 +41,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Trick.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="50" selection-start-line="50" selection-end-line="53" selection-end-column="29" />
+            <state relative-caret-position="612">
+              <caret line="97" selection-start-line="97" selection-end-line="100" selection-end-column="5" />
               <folding>
                 <element signature="e#30#78#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+              <folding>
+                <element signature="e#30#62#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,20 +74,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Form/PictureType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
+            <state relative-caret-position="342">
+              <caret line="19" column="31" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="31" />
+              <folding>
+                <element signature="e#28#51#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/admin/AdminTrickController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="39" column="73" selection-start-line="39" selection-start-column="61" selection-end-line="39" selection-end-column="73" />
+            <state relative-caret-position="360">
+              <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
               <folding>
                 <element signature="e#40#63#0#PHP" expanded="true" />
               </folding>
@@ -157,15 +170,14 @@
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/Entity/Picture.php" />
         <option value="$PROJECT_DIR$/src/Entity/Trick.php" />
-        <option value="$PROJECT_DIR$/src/Controller/admin/AdminTrickController.php" />
         <option value="$PROJECT_DIR$/src/Form/TrickType.php" />
-        <option value="$PROJECT_DIR$/src/Form/PictureType.php" />
         <option value="$PROJECT_DIR$/templates/admin/adminCreateTrick.html.twig" />
+        <option value="$PROJECT_DIR$/src/Form/PictureType.php" />
+        <option value="$PROJECT_DIR$/src/Controller/admin/AdminTrickController.php" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="27" />
     <option name="width" value="1250" />
     <option name="height" value="1050" />
   </component>
@@ -193,6 +205,12 @@
               <item name="SnowTricks_P6" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SnowTricks_P6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SnowTricks_P6" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SnowTricks_P6" type="b2602c69:ProjectViewProjectNode" />
@@ -301,12 +319,12 @@
       <workItem from="1590483598832" duration="1818000" />
       <workItem from="1590739890500" duration="3744000" />
       <workItem from="1590757955734" duration="599000" />
-      <workItem from="1590998876458" duration="6634000" />
+      <workItem from="1590998876458" duration="13917000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="334470000" />
+    <option name="totallyTimeSpent" value="341753000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -508,13 +526,6 @@
         <state relative-caret-position="-238" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tricks/showTrick.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/http-foundation/File/UploadedFile.php" />
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/intl/intl.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -554,16 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/services.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
@@ -588,13 +589,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="954">
-          <caret line="53" column="28" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/tricks/home.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -612,16 +606,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Services/FileUploader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding>
-            <element signature="e#32#98#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Picture.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-216">
@@ -629,10 +613,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="56" column="214" selection-start-line="54" selection-start-column="12" selection-end-line="56" selection-end-column="214" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tricks/showTrick.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/adminCreateTrick.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/PictureType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="31" />
+          <folding>
+            <element signature="e#28#51#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+          <folding>
+            <element signature="e#30#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Trick.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="50" selection-start-line="50" selection-end-line="53" selection-end-column="29" />
+        <state relative-caret-position="612">
+          <caret line="97" selection-start-line="97" selection-end-line="100" selection-end-column="5" />
           <folding>
             <element signature="e#30#78#0#PHP" expanded="true" />
           </folding>
@@ -649,27 +674,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/admin/AdminTrickController.php">
+    <entry file="file://$PROJECT_DIR$/src/Services/FileUploader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="39" column="73" selection-start-line="39" selection-start-column="61" selection-end-line="39" selection-end-column="73" />
+        <state relative-caret-position="684">
+          <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
           <folding>
-            <element signature="e#40#63#0#PHP" expanded="true" />
+            <element signature="e#32#98#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/adminCreateTrick.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Controller/admin/AdminTrickController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/PictureType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
+        <state relative-caret-position="360">
+          <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
+          <folding>
+            <element signature="e#40#63#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

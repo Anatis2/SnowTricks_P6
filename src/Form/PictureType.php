@@ -17,7 +17,7 @@ class PictureType extends AbstractType
     	$builder
 			->add('url')
 			->add('alt')
-			->add('pictureFile', FileType::class, [
+			->add('pictureFiles', FileType::class, [
 				'label' => false,
 				'mapped' => false, // on précise que ce champ n'est associé à aucune propriété de l'entité Trick (ni à aucune propriété d'autre entité)
 				'required' => false,
