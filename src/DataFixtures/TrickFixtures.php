@@ -8,9 +8,10 @@ use App\Entity\Trick;
 use App\Repository\TrickRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class TrickFixtures extends Fixture
+class TrickFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -25,31 +26,6 @@ class TrickFixtures extends Fixture
 				],
 				[ "name" => "Indy",
 					"description" => "Saisie de la carre frontside de la planche, entre les deux pieds, avec la main arrière.",
-					"category" => "Grabs",
-					"user" => "admin@admin.fr"
-				],
-				[ "name" => "test",
-					"description" => "test",
-					"category" => "Grabs",
-					"user" => "admin@admin.fr"
-				],
-				[ "name" => "ex 2 figures",
-					"description" => "ex 2 figures",
-					"category" => "Grabs",
-					"user" => "admin@admin.fr"
-				],
-				[ "name" => "figuretest",
-					"description" => "bidule",
-					"category" => "Grabs",
-					"user" => "admin@admin.fr"
-				],
-				[ "name" => "atre",
-					"description" => "a",
-					"category" => "Grabs",
-					"user" => "admin@admin.fr"
-				],
-				[ "name" => "dfdf",
-					"description" => "bidule",
 					"category" => "Grabs",
 					"user" => "admin@admin.fr"
 				],
@@ -81,24 +57,9 @@ class TrickFixtures extends Fixture
 					"category" => "Flips",
 					"user" => "admin@admin.fr"
 				],
-				[ "name" => "Test figure flip",
-					"description" => "flip",
-					"category" => "Flips",
-					"user" => "admin@admin.fr"
-				],
-				[ "name" => "",
-					"description" => "",
-					"category" => "Rotations désaxées",
-					"user" => "admin@admin.fr"
-				],
 				[ "name" => "Nose slide",
 					"description" => "On glisse avec l'avant de la planche sur la barre.",
 					"category" => "Slides",
-					"user" => "admin@admin.fr"
-				],
-				[ "name" => "",
-					"description" => "",
-					"category" => "One foot tricks",
 					"user" => "admin@admin.fr"
 				],
 				[ "name" => "Backside Air",
@@ -130,4 +91,12 @@ class TrickFixtures extends Fixture
 
         $manager->flush();
     }
+
+	public function getDependencies()
+	{
+		return array(
+			CategoryFixtures::class,
+			UserFixtures::class
+		);
+	}
 }

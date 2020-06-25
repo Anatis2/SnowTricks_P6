@@ -3,7 +3,7 @@ body .cover {
   width: 100%;
   height: 100vh;
   /* vh = viewport height (hauteur d'écran) => 100vh prendra toujours 100% de l'écran */
-  background: url("../images/pictures/DefaultImage2.jpg") no-repeat;
+  background: url("../images/DefaultImage2.jpg") no-repeat;
   background-size: cover;
   display: flex;
   flex-direction: column;
