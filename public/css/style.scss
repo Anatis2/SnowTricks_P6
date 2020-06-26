@@ -1,6 +1,6 @@
 
 body {
-  .cover {
+  .coverHome {
     width: 100%;
     height: 100vh; /* vh = viewport height (hauteur d'écran) => 100vh prendra toujours 100% de l'écran */
     background: url("../images/DefaultImage2.jpg")
@@ -12,6 +12,11 @@ body {
     text-align: center;
     padding: 0 20px;
     position: relative;
+    .coverHomeText {
+      background: rgba(228, 228, 228, 0.4);
+      width: 50%;
+      margin-left: 25%;
+    }
     #arrowDownIcon {
       position: absolute;
       right: 0;
@@ -23,7 +28,28 @@ body {
       }
     }
   }
+
+  .coverTrick {
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* met le texte au centre de l'image (horizontalement) */
+    padding: 0 20px;
+    position: relative;
+    margin-bottom: 50px;
+    .coverTrickTitle {
+      position: absolute;
+      margin-left: 45%;
+      h1 {
+        background: rgba(228, 228, 228, 0.4);
+      }
+    }
+  }
   article {
+    display: inline-block;
+    text-align: center;
     .homeCards {
       margin: auto;
       display: flex;
@@ -43,5 +69,21 @@ body {
       }
     }
   }
+  .trickPictures, .trickDescription, .trickInfos, .trickCommentsForm, .trickComments {
+    margin-bottom: 50px;
+  }
+  .trickPictures {
+    .gridPictures {
+      height: 200px;
+      width: 200px;
+      .gridPicturesImg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
 }
+
+
 

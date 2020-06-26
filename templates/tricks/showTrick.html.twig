@@ -4,26 +4,52 @@
 
 {% block body %}
 
-    <div class="container">
-
-        <article>
+    <div class="coverTrick">
+        <div class="coverTrickTitle">
             <h1>{{ trick.name }}</h1>
-            <p>Catégorie : {{ trick.category.name }} <em>(Ajouté le {{ trick.createdAt | date('d/m/Y') }})</em></p>
-            <p>{{ trick.description | nl2br }}</p>
-            <p><a href="{{ path('home')}}">Retour à la liste des figures...</a></p>
-        </article>
+        </div>
+        {% if trick.pictures is empty %}
+            <img src="/images/empty.jpg" alt="image">
+        {% else %}
+            {% for picture in trick.pictures %}
+                {% if loop.index == 1 %}
+                    <img src="/uploads/{{ picture.filename }}" alt="image">
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <article class="container-fluid">
+
+        <div class="trickPictures">
+            <div class="row">
+                {% for picture in trick.pictures %}
+                    <div class="col-2 gridPictures mb-4">
+                        <img src="/uploads/{{ picture.filename }}" alt="image" class="gridPicturesImg">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="trickDescription">
+            {{ trick.description | nl2br }}
+        </div>
+
+        <div class="trickInfos">
+            <button type="button" class="btn btn-outline-info" disabled>Catégorie : {{ trick.category.name }}</button>
+            <button type="button" class="btn btn-outline-info" disabled>Ajouté le {{ trick.createdAt | date('d/m/Y') }}</button>
+        </div>
 
         {% if(app.user) %}
-            {% dump(app.user) %}
-            {{ form_start(form)}}
-            <div class="form-group">
-                {{ form_row(form.content, {'label': ' '}) }}
-                <button type="submit" class="btn btn-primary">Envoyer le commentaire</button>
+            <div class="trickCommentsForm">
+                {{ form_start(form)}}
+                    {{ form_row(form.content, {'label': ' '}) }}
+                    <button type="submit" class="btn btn-primary">Envoyer le commentaire</button>
+                {{ form_end(form)}}
             </div>
-            {{ form_end(form)}}
         {% endif %}
 
-        <article>
+        <div class="trickComments">
             <h4>Commentaires</h4>
             {% if trick.messages is empty %}
                 <p>Il n'y a pas encore de commentaire associé à cette figure</p>
@@ -32,9 +58,11 @@
                     <p>{{ message.content }}</p>
                 {% endfor %}
             {% endif %}
-        </article>
+        </div>
 
-    </div>
+        <p><a href="{{ path('home')}}">Retour à la page d'accueil...</a></p>
+
+    </article>
 
 {% endblock %}
 

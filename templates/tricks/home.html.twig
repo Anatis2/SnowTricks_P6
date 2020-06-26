@@ -4,17 +4,17 @@
 
 {% block body %}
 
-    <div class="cover">
-        <div id="coverText">
-            <h1>Titre</h1>
-            <p class="subtitle">Phrase d'accroche</p>
+    <div class="coverHome">
+        <div class="coverHomeText">
+            <h1>SNOWTRICKS <br/> le site communautaire des figures de snowboard</h1>
+            <p class="subtitle">Venez découvrir le snowboard, parfaire vos connaissances et partager vos astuces !</p>
         </div>
         <div id="arrowDownIcon">
             <a href="#tricksArticle"><i class="fas fa-arrow-down"></i></a>
         </div>
     </div>
 
-    <article class="container-fluid" id="tricksArticle">
+    <article class="container-fluid">
 
         <div class="homeCards">
             {% for trick in tricks %}
@@ -23,7 +23,9 @@
                         <img src="/images/empty.jpg" class="card-img-top" alt="image">
                     {% else %}
                         {% for picture in trick.pictures %}
-                            <img src="/uploads/{{ picture.filename }}" class="card-img-top" alt="image">
+                            {% if loop.index == 1 %}
+                                <img src="/uploads/{{ picture.filename }}" class="card-img-top" alt="image">
+                            {% endif %}
                         {% endfor %}
                     {% endif %}
                     <div class="card-body">
