@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Entity\Trick;
 use App\Repository\TrickRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\UserRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -19,8 +20,8 @@ class TrickFixtures extends Fixture implements DependentFixtureInterface
 			[
 				[ "name" => "Mute",
 					"description" => "Le mute fait partie de la catégorie des grabs, qui consistent à attraper la planche avec la main pendant le saut.
-									Le verbe anglais to grab signifie « attraper. »
-									Le mute se fait par une saisie de la carre frontside de la planche entre les deux pieds avec la main avant.",
+					Le verbe anglais to grab signifie « attraper. »
+					Le mute se fait par une saisie de la carre frontside de la planche entre les deux pieds avec la main avant.",
 					"category" => "Grabs",
 					"user" => "admin@admin.fr"
 				],
@@ -51,9 +52,9 @@ class TrickFixtures extends Fixture implements DependentFixtureInterface
 				],
 				[ "name" => "Front flip",
 					"description" => "Un front flip correspond à une rotation avant.
-						Il est possible de faire plusieurs flips à la suite, et d'ajouter un grab à la rotation.
-						Les flips agrémentés d'une vrille existent aussi (Mac Twist, Hakon Flip, ...), mais de manière beaucoup plus rare, et se confondent souvent avec certaines rotations horizontales désaxées.
-						Néanmoins, en dépit de la difficulté technique relative d\'une telle figure, le danger de retomber sur la tête ou la nuque est réel et conduit certaines stations de ski à interdire de telles figures dans ses snowparks.",
+					Il est possible de faire plusieurs flips à la suite, et d'ajouter un grab à la rotation.
+					Les flips agrémentés d'une vrille existent aussi (Mac Twist, Hakon Flip, ...), mais de manière beaucoup plus rare, et se confondent souvent avec certaines rotations horizontales désaxées.
+					Néanmoins, en dépit de la difficulté technique relative d\'une telle figure, le danger de retomber sur la tête ou la nuque est réel et conduit certaines stations de ski à interdire de telles figures dans ses snowparks.",
 					"category" => "Flips",
 					"user" => "admin@admin.fr"
 				],
@@ -83,8 +84,11 @@ class TrickFixtures extends Fixture implements DependentFixtureInterface
 				$trick
 					->setName($v['name'])
 					->setDescription($v['description'])
-					->setCategory($category)
-					->setUser($user);
+					->setCategory($category);
+
+				$manager->persist($trick);
+
+				$trick->setUser($user);
 
 				$manager->persist($trick);
 		}

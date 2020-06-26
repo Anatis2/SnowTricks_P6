@@ -63,7 +63,7 @@ class User implements UserInterface, \Serializable
     private $messages;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Trick", mappedBy="user")
      */
     private $tricks;
 

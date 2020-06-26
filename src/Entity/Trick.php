@@ -44,7 +44,7 @@ class Trick
     private $messages;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="tricks")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tricks")
      */
     private $user;
 
