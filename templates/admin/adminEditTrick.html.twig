@@ -16,10 +16,78 @@
         {{ form_row(form.name, {'label': 'Nom de la figure'}) }}
         {{ form_row(form.description, {'label': 'Description de la figure'}) }}
 
-        <button type="submit" class="btn btn-primary">Modifier la figure</button>
+        {{ form_row(form.pictures) }}
+
+        <a href="#" id="add_picture" class="btn btn-primary">Ajouter une image</a>
+        <br/><br/>
+        <button type="submit" class="btn btn-success">Modifier la figure</button>
 
         {{ form_end(form) }}
 
     </div>
 
 {% endblock %}
+
+{% block javascripts %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        var $container = $('div#trick_pictures'); // On récupère l'id de la balise <div> qui contient l'attribut data-prototype
+        var index = $container.find(':input').length; // On définit un compteur pour nommer de manière unique les champs que l'on va ajouter dynamiquement
+
+        $('#add_picture').click(function(e) { // On créée une fonction qui se déclenche à chaque fois que l'on clique sur un lien contenant l'id "add_picture"
+            addPicture($container); // Nom de la fonction qui sera déclenchée
+            e.preventDefault(); // Evite qu'un # apparaisse dans l'URL
+            return false;
+        });
+
+        if(index == 0) { // Si il n'existe pas déjà de champ d'upload d'image
+            addPicture($container); // Alors on appelle la fonction addPicture()
+        } else { // Sinon
+            $container.children('div').each(function() { // On appelle une fonction pour chacun de ces champs
+                addDeleteLink($(this)); // Nom de la fonction qui sera déclenchée
+            });
+        }
+
+        /**
+         * Fonction qui ajoute un formulaire de type PictureType
+         * @param $container
+         */
+        function addPicture($container) {
+            var template = $container.attr('data-prototype') // On créée une variable qui récupère la balise contenant l'attibut data-prototype
+                .replace(/__name__label__/g, 'Image ' + (index+1) + ' (fichiers autorisés : .png)') // Et dans laquelle on remplace le texte "__name__label__" qu'elle contient par le label du champ
+                .replace(/__name__/g, index); // Ainsi que le texte "__name__" qu'elle contient par le numéro du champ
+
+            var $prototype = $(template); // On créée un objet jQuery qui contient ce template
+
+            addDeleteLink($prototype); // On ajoute à cet objet jQuery un lien pour pouvoir supprimer l'image
+
+            $container.append($prototype); // On ajoute cet objet modifié à la fin de la balise <div>
+
+            index++; // On incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+        }
+
+        /**
+         * Fonction qui ajoute un lien de suppression d'une image
+         * @param $prototype
+         */
+        function addDeleteLink($prototype) {
+            var $deleteLink = $('<a href="#" class="btn btn-danger btn-sm">Supprimer l\'image</a>'); // On créée une variable qui créée le lien de suppression
+
+            $prototype.append($deleteLink); // On ajoute ce lien de suppression
+
+            $deleteLink.click(function(e) { // On ajoute un listener sur ce lien de suppression
+                $prototype.remove(); // On supprime effectivement ce lien
+                e.preventDefault(); // Evite qu'un # apparaisse dans l'URL
+                return  false;
+            });
+        }
+    });
+
+</script>
+
+{% endblock %}
+

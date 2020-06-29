@@ -4,6 +4,12 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 
+
+parameters:
+    dir_uploads: '%kernel.project_dir%/public/uploads'
+    web_uploads: '/uploads'
+
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -28,5 +34,5 @@ services:
     # MES SERVICES
     App\Services\FileUploader:
         arguments:
-            $targetDirectory: '%kernel.project_dir%/public/uploads'
+            $targetDirectory: '%dir_uploads%'
 

@@ -1,0 +1,17 @@
+{% use "bootstrap_4_layout.html.twig" %}
+
+
+
+{% block picture_widget %}
+
+    {% set filename = form.filename.vars.data %}
+    {% if filename|length %}
+        <h4>{{ form.filename.vars.data }}</h4>
+        <img src="{{ asset(web_uploads ~ '/' ~ form.filename.vars.data) }}" class="imgFormTheme"/>
+    {% endif %}
+    {{ form_errors(form) }}
+    {{ form_row(form.alt) }}
+    {{ form_widget(form.file) }}
+    {{ form_row(form.deleteButton) }}
+
+{%  endblock %}

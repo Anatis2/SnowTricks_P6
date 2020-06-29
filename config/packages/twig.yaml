@@ -1,5 +1,6 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
-    form_themes: ['bootstrap_4_layout.html.twig']
+    form_themes: ['form_theme.html.twig']
     globals:
         app_version: 0.1
+        web_uploads: '%web_uploads%'

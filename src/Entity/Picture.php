@@ -96,4 +96,5 @@ class Picture
         $this->trick = $trick;
         return $this;
     }
+
 }

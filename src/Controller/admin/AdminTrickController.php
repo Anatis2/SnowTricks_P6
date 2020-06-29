@@ -19,6 +19,19 @@ use Symfony\Component\HttpFoundation\Request;
 class AdminTrickController extends AbstractController
 {
 
+	/**
+	 * @Route("/administration", name="adminHome")
+	 */
+	public function adminHome(TrickRepository $repo)
+	{
+		$tricks = $repo->findAll();
+
+		return $this->render('admin/adminHome.html.twig', [
+			'tricks' => $tricks
+		]);
+	}
+
+
     /**
      * @Route("/creation", name="createTrick")
      */
@@ -52,35 +65,33 @@ class AdminTrickController extends AbstractController
 
 
     /**
-     * @Route("/administration", name="adminHome")
-     */
-    public function adminHome(TrickRepository $repo)
-    {
-        $tricks = $repo->findAll();
-
-        return $this->render('admin/adminHome.html.twig', [
-            'tricks' => $tricks
-        ]);
-    }
-
-
-    /**
      * @Route("/edition/{id}", name="editTrick")
      */
-    public function editTrick(Trick $trick, Request $request, EntityManagerInterface $manager)
+    public function editTrick(Trick $trick, Request $request, EntityManagerInterface $manager, FileUploader $fileUploader)
     {
-        $form = $this->createForm(TrickType::class, $trick);
 
+		$form = $this->createForm(TrickType::class, $trick);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+			/**
+			 * @var UploadedFile $file
+			 */
+			foreach($trick->getPictures() as $picture) {
+				$fileUploader->upload($picture);
+			};
+
+			$manager->persist($trick);
             $manager->flush();
+
             $this->addFlash('success', 'La figure a été modifiée avec succès !');
             return $this->redirectToRoute('adminHome');
         }
 
         return $this->render('admin/adminEditTrick.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+			'trick' => $trick
         ]);
     }
 
