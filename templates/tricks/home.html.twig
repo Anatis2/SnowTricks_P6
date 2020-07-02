@@ -24,7 +24,7 @@
                     {% else %}
                         {% for picture in trick.pictures %}
                             {% if loop.index == 1 %}
-                                <img src="/uploads/{{ picture.filename }}" class="card-img-top" alt="image">
+                                <img src="/uploads/{{ picture.filename }}" class="card-img-top" alt="{{ picture.alt }}">
                             {% endif %}
                         {% endfor %}
                     {% endif %}

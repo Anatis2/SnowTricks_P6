@@ -66,11 +66,11 @@ class Picture
 	/**
 	 * @param mixed $file
 	 */
-	public function setFile($file): void
+	public function setFile($file)
 	{
 		$this->file = $file;
+		return $this;
 	}
-
 
 
 	public function getFilename()
@@ -81,6 +81,7 @@ class Picture
 	public function setFilename($filename)
 	{
 		$this->filename = $filename;
+		return $this;
 
 	}
 
@@ -89,9 +90,10 @@ class Picture
 		return $this->alt;
 	}
 
-	public function setAlt($alt): void
+	public function setAlt($alt)
 	{
 		$this->alt = $alt;
+		return $this;
 	}
 
 	/**

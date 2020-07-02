@@ -3,16 +3,39 @@
   <component name="ChangeListManager">
     <list default="true" id="b391dbce-c5e8-44cf-9c1a-9b5ad91fd9cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/admin/AdminTrickController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/admin/AdminTrickController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute1-5ef9a82c81868.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute1-5ef9a87ba62f2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute1-5efd924d3088b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute1-5efd9a28e35c2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute1-5efd9a7e8361f.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute2-5ef4c103f34de.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/mute2-5efdb184ef939.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute2-5efa001c19914.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute3-5ef9dd961b3c3.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/mute3-5efdb1ae9a96e.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute4-5ef9a606b4aa3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute4-5ef9a70d683e1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute4-5ef9a887d3ffe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute4-5efa0030bf767.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute4-5efd93a4d0dd7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5ef9a4ff4f4d8.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/mute5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5ef9a59451edd.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/mute6-5efdb11f750a6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5ef9a5b853abc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5ef9a5cf451e2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5ef9a5f2d271e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5ef9a70d6807c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5ef9ddf116aca.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5ef9e182cd552.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5ef9e182cd840.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5efb074dbdcdd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5efd8fc281c2e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5efd944e31f5e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5efd949c9ca29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6-5efd99a682404.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/mute6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/PictureFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/PictureFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Picture.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Picture.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Trick.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Trick.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PictureType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PictureType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/TrickType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TrickType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/FileUploader.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/FileUploader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/adminCreateTrick.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/adminCreateTrick.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/adminEditTrick.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/adminEditTrick.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/form_theme.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/form_theme.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tricks/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tricks/home.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,49 +63,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+        <entry file="file://$PROJECT_DIR$/templates/tricks/home.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+            <state relative-caret-position="128">
+              <caret line="26" column="104" selection-start-line="26" selection-start-column="104" selection-end-line="26" selection-end-column="104" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Services/FileUploader.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
-              <folding>
-                <element signature="e#32#55#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/form_theme.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="85" selection-start-line="85" selection-end-line="85" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/admin/adminEditTrick.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/admin/AdminTrickController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="295">
-              <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
               <folding>
                 <element signature="e#40#63#0#PHP" expanded="true" />
               </folding>
@@ -93,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Picture.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="28" column="17" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="17" />
+            <state relative-caret-position="1224">
+              <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
               <folding>
                 <element signature="e#30#62#0#PHP" expanded="true" />
               </folding>
@@ -117,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Trick.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="56" column="32" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
+            <state relative-caret-position="343">
+              <caret line="60" column="48" selection-start-line="60" selection-start-column="48" selection-end-line="60" selection-end-column="48" />
               <folding>
                 <element signature="e#30#78#0#PHP" expanded="true" />
               </folding>
@@ -126,11 +119,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Form/TrickType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+            <state relative-caret-position="237">
+              <caret line="32" column="54" lean-forward="true" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
               <folding>
                 <element signature="e#28#52#0#PHP" expanded="true" />
               </folding>
@@ -162,6 +155,8 @@
       <find>web_uploads</find>
       <find>ajouter</find>
       <find>ready</find>
+      <find>alt</find>
+      <find>setAlt</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -197,12 +192,10 @@
         <option value="$PROJECT_DIR$/src/Services/ComplexObject.php" />
         <option value="$PROJECT_DIR$/src/Controller/TrickController.php" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/src/DataFixtures/PictureFixtures.php" />
         <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/DataFixtures/TrickFixtures.php" />
         <option value="$PROJECT_DIR$/templates/tricks/showTrick.html.twig" />
         <option value="$PROJECT_DIR$/templates/admin/adminHome.html.twig" />
-        <option value="$PROJECT_DIR$/templates/tricks/home.html.twig" />
         <option value="$PROJECT_DIR$/config/packages/twig.yaml" />
         <option value="$PROJECT_DIR$/public/css/style.scss" />
         <option value="$PROJECT_DIR$/src/EventSubscriber/DeletePictureListener.php" />
@@ -214,13 +207,15 @@
         <option value="$PROJECT_DIR$/templates/admin/adminCreateTrick.html.twig" />
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/templates/admin/adminEditTrick.html.twig" />
-        <option value="$PROJECT_DIR$/src/Form/TrickType.php" />
         <option value="$PROJECT_DIR$/src/Form/PictureType.php" />
-        <option value="$PROJECT_DIR$/src/Entity/Trick.php" />
         <option value="$PROJECT_DIR$/templates/form_theme.html.twig" />
-        <option value="$PROJECT_DIR$/src/Entity/Picture.php" />
-        <option value="$PROJECT_DIR$/src/Services/FileUploader.php" />
         <option value="$PROJECT_DIR$/src/Controller/admin/AdminTrickController.php" />
+        <option value="$PROJECT_DIR$/src/Services/FileUploader.php" />
+        <option value="$PROJECT_DIR$/src/Entity/Trick.php" />
+        <option value="$PROJECT_DIR$/src/Form/TrickType.php" />
+        <option value="$PROJECT_DIR$/templates/tricks/home.html.twig" />
+        <option value="$PROJECT_DIR$/src/DataFixtures/PictureFixtures.php" />
+        <option value="$PROJECT_DIR$/src/Entity/Picture.php" />
       </list>
     </option>
   </component>
@@ -265,6 +260,12 @@
               <item name="SnowTricks_P6" type="b2602c69:ProjectViewProjectNode" />
               <item name="SnowTricks_P6" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DataFixtures" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SnowTricks_P6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SnowTricks_P6" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -278,17 +279,6 @@
               <item name="SnowTricks_P6" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Services" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SnowTricks_P6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SnowTricks_P6" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SnowTricks_P6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SnowTricks_P6" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SnowTricks_P6" type="b2602c69:ProjectViewProjectNode" />
@@ -424,18 +414,18 @@
       <workItem from="1591101092575" duration="8087000" />
       <workItem from="1593073028206" duration="3193000" />
       <workItem from="1593080009202" duration="35390000" />
-      <workItem from="1593415907062" duration="52936000" />
+      <workItem from="1593415907062" duration="59018000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="444992000" />
+    <option name="totallyTimeSpent" value="451074000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15598291" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15598291" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -448,7 +438,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3003195" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3003195" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -592,32 +582,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataFixtures/PictureFixtures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-244">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-          <folding>
-            <element signature="e#36#59#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1404">
           <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
           <folding>
             <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataFixtures/TrickFixtures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="98" column="24" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="35" />
-          <folding>
-            <element signature="e#36#60#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -629,13 +599,6 @@
           <folding>
             <element signature="e#34#54#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tricks/home.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="36" selection-start-line="24" selection-start-column="24" selection-end-line="28" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -708,24 +671,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/adminHome.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/adminCreateTrick.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-72">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -736,6 +685,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Services/FileUploader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding>
+            <element signature="e#32#55#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/form_theme.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/adminEditTrick.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -743,22 +716,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/adminHome.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/admin/AdminTrickController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+          <folding>
+            <element signature="e#40#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Trick.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="56" column="32" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
+        <state relative-caret-position="343">
+          <caret line="60" column="48" selection-start-line="60" selection-start-column="48" selection-end-line="60" selection-end-column="48" />
           <folding>
             <element signature="e#30#78#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/TrickType.php">
+    <entry file="file://$PROJECT_DIR$/templates/tricks/home.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+        <state relative-caret-position="128">
+          <caret line="26" column="104" selection-start-line="26" selection-start-column="104" selection-end-line="26" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataFixtures/PictureFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
           <folding>
-            <element signature="e#28#52#0#PHP" expanded="true" />
+            <element signature="e#36#59#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataFixtures/TrickFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <folding>
+            <element signature="e#36#60#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Picture.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
+          <folding>
+            <element signature="e#30#62#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -773,39 +790,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form_theme.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Form/TrickType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Picture.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="28" column="17" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="17" />
+        <state relative-caret-position="237">
+          <caret line="32" column="54" lean-forward="true" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
           <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Services/FileUploader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#32#55#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/admin/AdminTrickController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
-          <folding>
-            <element signature="e#40#63#0#PHP" expanded="true" />
+            <element signature="e#28#52#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

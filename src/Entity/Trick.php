@@ -49,7 +49,7 @@ class Trick
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="trick", cascade={"persist","remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="trick", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $pictures;
 
@@ -59,7 +59,6 @@ class Trick
         $this->createdAt = new \DateTime();
         $this->messages = new ArrayCollection();
         $this->pictures = new ArrayCollection();
-
     }
 
     public function getId(): ?int

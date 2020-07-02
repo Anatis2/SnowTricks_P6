@@ -14,16 +14,32 @@ class PictureFixtures extends Fixture implements DependentFixtureInterface
     {
         $pictures = [
         	[	"trickName" => "Indy",
-        		"filename" => "indy1.png"
+        		"filename" => "indy1.png",
+				"alt" => "Image d'Indy"
 			],
 			[	"trickName" => "Mute",
-				"filename" => "mute1.png"
+				"filename" => "mute1.png",
+				"alt" => "Image de mute"
 			],
 			[	"trickName" => "Mute",
-				"filename" => "mute2.png"
+				"filename" => "mute2.png",
+				"alt" => "Image de mute"
+			],
+			[	"trickName" => "Mute",
+				"filename" => "mute3.png",
+				"alt" => "Image de mute"
+			],
+			[	"trickName" => "Mute",
+				"filename" => "mute4.png",
+				"alt" => "Image de mute"
+			],
+			[	"trickName" => "Mute",
+				"filename" => "mute5.png",
+				"alt" => "Image de mute"
 			],
 			[	"trickName" => "180",
-				"filename" => "180_1.png"
+				"filename" => "180_1.png",
+				"alt" => "Image de 180"
 			]
 		];
 
@@ -34,7 +50,8 @@ class PictureFixtures extends Fixture implements DependentFixtureInterface
 
         	$picture
 					->setTrick($trick)
-					->setFilename($v['filename']);
+					->setFilename($v['filename'])
+					->setAlt($v['alt']);
 
         	$manager->persist($picture);
 		}
