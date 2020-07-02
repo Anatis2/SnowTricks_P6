@@ -73,7 +73,7 @@ class AdminTrickController extends AbstractController
 		$form = $this->createForm(TrickType::class, $trick);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()) {
 
 			/**
 			 * @var UploadedFile $file

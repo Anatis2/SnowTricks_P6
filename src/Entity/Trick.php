@@ -59,6 +59,7 @@ class Trick
         $this->createdAt = new \DateTime();
         $this->messages = new ArrayCollection();
         $this->pictures = new ArrayCollection();
+
     }
 
     public function getId(): ?int

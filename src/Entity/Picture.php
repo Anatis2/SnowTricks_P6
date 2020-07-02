@@ -5,9 +5,11 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PictureRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Picture
 {
@@ -27,14 +29,20 @@ class Picture
     private $file;
 
 	/**
-	 * @ORM\Column(type="string", length=255, nullable=true)
+	 * @ORM\Column(type="string", length=255, nullable=false)
+	 * @Assert\NotBlank
 	 */
     private $filename;
 
 	/**
-	 * @ORM\Column(type="string", length=255, nullable=true)
+	 * @ORM\Column(type="string", length=255, nullable=false)
 	 */
     private $alt;
+
+	/**
+	 * @ORM\Column(type="datetime")
+	 */
+    private $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Trick", inversedBy="pictures")
@@ -84,6 +92,30 @@ class Picture
 	public function setAlt($alt): void
 	{
 		$this->alt = $alt;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCreatedAt()
+	{
+		return $this->createdAt;
+	}
+
+	/**
+	 * @param mixed $createdAt
+	 */
+	public function setCreatedAt($createdAt): void
+	{
+		$this->createdAt = $createdAt;
+	}
+
+	/**
+	 * @ORM\PrePersist
+	 */
+	public function onPrePersist()
+	{
+		$this->createdAt = new DateTime();
 	}
 
     public function getTrick(): ?Trick
