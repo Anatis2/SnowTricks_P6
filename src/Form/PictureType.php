@@ -22,12 +22,12 @@ class PictureType extends AbstractType
 			])
 			->add('alt', TextType::class, [
 				'label' => 'Nom de l\'image',
-#				'required' => true,
 			])
 			->add('file', FileType::class, [
 				'label' => false,
 				'mapped' => true,
 				'required' => false,
+
 			])
 			;
     }

@@ -1,9 +1,9 @@
 {% use "bootstrap_4_layout.html.twig" %}
 
-{% block picture_widget %}
+{% block picture_widget %} {# block qui affiche les images liées à la figure (si il y en a), ainsi que ses éléments #}
     {% set filename = form.filename.vars.data %}
-    {% if filename|length %}
-        <h4>{{ form.filename.vars.data }}</h4>
+    {% if filename|length %} {# Si il y a un filename #}
+        <h4>{{ form.filename.vars.data }}</h4> {# alors on affiche les données liées au filename (le titre de l'image et l'image en question) #}
         <img src="{{ asset(web_uploads ~ '/' ~ form.filename.vars.data) }}" class="imgFormTheme"/>
     {% endif %}
     {{ form_errors(form) }}
@@ -13,11 +13,9 @@
 
 
 {%- block collection_widget -%}
-{#
-    {{  dump(block('collection_widget_item', {'item': prototype })) }}
-#}
+
     {% if prototype is defined and not prototype.rendered %}
-        {%- set attr = attr|merge({'data-prototype': form_row(prototype) }) %}
+        {%- set attr = attr|merge({'data-prototype': form_row(prototype) }) %} {# affiche le data_prototype (donc la partie de formulaire liée au CollectionType) #}
     {% endif %}
     {# form_widget(form) #}
     {# form_widget_compound(form) #}
@@ -26,7 +24,7 @@
             {{ form_errors(form) }}
         {%- endif -%}
         <div class="collection-elements">
-            {{ block('collection_widget_rows') }}
+            {{ block('collection_widget_rows') }} {# affiche les éléments liés aux images de la figure #}
         </div>
     </div>
     {{ block('collection_widget_js') }}
@@ -55,7 +53,7 @@
         {#- form_label(child) -#}
         {{- form_widget(child, widget_attr) -}}
         {{- form_help(child) -}}
-        <button id="{{ child.vars.id }}_delete">delete</button>
+        <button id="_delete" class="btn btn-danger btn-sm">Supprimer l'image</button>
     </{{ element|default('div') }}>
 {% endblock %}
 
@@ -66,7 +64,7 @@
             var $container = $('#{{ id }}'); // On récupère l'id de la balise <div> qui contient l'attribut data-prototype
             var index = $container.find(':input').length; // On définit un compteur pour nommer de manière unique les champs que l'on va ajouter dynamiquement
 
-            $('#{{ id }}_add').click(function(e) { // On créée une fonction qui se déclenche à chaque fois que l'on clique sur un lien contenant l'id "add_picture"
+            $('#{{ id }}_add').click(function(e) { // On créée une fonction qui se déclenche à chaque fois que l'on clique sur un lien contenant l'id "_add"
                 addPicture($container); // Nom de la fonction qui sera déclenchée
                 e.preventDefault(); // Evite qu'un # apparaisse dans l'URL
 //                return false;
@@ -95,14 +93,14 @@
              * @param $prototype
              */
             function addDeleteLink($prototype) {
-                var $deleteLink = $('<a href="#" class="btn btn-danger btn-sm">Supprimer l\'image</a>'); // On créée une variable qui créée le lien de suppression
+                var $deleteLink = $("<button id='_delete' class='btn btn-danger btn-sm'>Supprimer l\'image</button>"); // On créée une variable qui créée le lien de suppression
 
                 $prototype.append($deleteLink); // On ajoute ce lien de suppression
 
                 $deleteLink.click(function(e) { // On ajoute un listener sur ce lien de suppression
                     $prototype.remove(); // On supprime effectivement ce lien
                     e.preventDefault(); // Evite qu'un # apparaisse dans l'URL
-                    return  false;
+                    return false;
                 });
             }
         });
