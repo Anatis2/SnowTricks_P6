@@ -21,13 +21,13 @@ class PictureType extends AbstractType
 				'disabled' => true,
 			])
 			->add('alt', TextType::class, [
-				'label' => 'Nom de l\'image',
+				'label' => "Nom de l'image",
 			])
 			->add('file', FileType::class, [
-				'label' => false,
+				'label' => "Envoi d'un nouveau fichier",
+				'help' => "fichiers autorisés : .png",
 				'mapped' => true,
 				'required' => false,
-
 			])
 			;
     }
