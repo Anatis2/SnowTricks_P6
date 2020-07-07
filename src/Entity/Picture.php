@@ -23,14 +23,14 @@ class Picture
 	/**
 	 * @Assert\File(
 	 *      maxSize = "1500k",
-			mimeTypes = { "image/png" }
+	 *		mimeTypes = { "image/png" }
 	 * )
 	 */
     private $file;
 
 	/**
 	 * @ORM\Column(type="string", length=255)
-	 * @Assert\NotBlank
+	 * #Assert\NotBlank
 	 */
     private $filename;
 
@@ -50,7 +50,19 @@ class Picture
      */
     private $trick;
 
-    public function getId(): ?int
+
+	/**
+	 * @Assert\IsTrue(message="Vous avez oublié le fichier pour votre image !")
+	 */
+	public function hasFile() {
+		if ($this->filename !== null && $this->filename !== '') return true;
+		if ($this->file !== null) return true;
+		return false;
+	}
+
+
+
+	public function getId(): ?int
     {
         return $this->id;
     }

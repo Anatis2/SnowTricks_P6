@@ -53,9 +53,8 @@ class AdminTrickController extends AbstractController
 			$manager->persist($trick);
 			$manager->flush();
 
-
-            $this->addFlash('success', 'La figure a été créée avec succès !');
-            return $this->redirectToRoute('adminHome');
+			$this->addFlash('success', 'La figure a été créée avec succès !');
+			return $this->redirectToRoute('adminHome');
         }
 
         return $this->render('admin/adminCreateTrick.html.twig', [

@@ -73,6 +73,7 @@ body {
   .trickPictures, .trickDescription, .trickInfos, .trickCommentsForm, .trickComments {
     margin-bottom: 50px;
   }
+
   .trickPictures {
     .gridPictures {
       height: 200px;
@@ -82,6 +83,10 @@ body {
         height: 100%;
       }
     }
+  }
+
+  .custom-file-input {
+    opacity: 1;
   }
 
   .imgFormTheme {
