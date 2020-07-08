@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TrickRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Trick
 {
@@ -34,6 +36,11 @@ class Trick
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 */
+	private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="tricks")
@@ -77,7 +84,6 @@ class Trick
     public function setName(string $name): self
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -89,7 +95,6 @@ class Trick
     public function setDescription(string $description): self
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -102,6 +107,32 @@ class Trick
     {
         $this->createdAt = $createdAt;
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getUpdatedAt()
+	{
+		return $this->updatedAt;
+	}
+
+	/**
+	 * @param mixed $updatedAt
+	 */
+	public function setUpdatedAt($updatedAt): void
+	{
+		$this->updatedAt = $updatedAt;
+	}
+
+	/**
+	 * @ORM\PreUpdate
+	 * @throws \Exception
+	 */
+	public function onPreUpdate()
+	{
+		$this->updatedAt = new DateTime();
+	}
+
 
     public function getCategory(): ?Category
     {
@@ -142,7 +173,6 @@ class Trick
 	}
 
 
-
     /**
      * @return Collection|Message[]
      */
@@ -157,7 +187,6 @@ class Trick
             $this->messages[] = $message;
             $message->setTrick($this);
         }
-
         return $this;
     }
 
@@ -170,7 +199,6 @@ class Trick
                 $message->setTrick(null);
             }
         }
-
         return $this;
     }
 
@@ -188,7 +216,6 @@ class Trick
             $this->pictures[] = $picture;
             $picture->setTrick($this);
         }
-
         return $this;
     }
 
@@ -201,7 +228,6 @@ class Trick
                 $picture->setTrick(null);
             }
         }
-
         return $this;
     }
 }

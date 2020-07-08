@@ -38,6 +38,9 @@
         <div class="trickInfos">
             <button type="button" class="btn btn-outline-info" disabled>Catégorie : {{ trick.category.name }}</button>
             <button type="button" class="btn btn-outline-info" disabled>Ajouté le {{ trick.createdAt | date('d/m/Y') }}</button>
+                {% if(trick.updatedAt) is not null %}
+            <button type="button" class="btn btn-outline-info" disabled>Modifié le {{ trick.updatedAt | date('d/m/Y') }}</button>
+            {% endif %}
         </div>
 
         {% if(app.user) %}

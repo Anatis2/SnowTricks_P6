@@ -51,17 +51,6 @@ class Picture
     private $trick;
 
 
-	/**
-	 * @Assert\IsTrue(message="Vous avez oublié le fichier pour votre image !")
-	 */
-	public function hasFile() {
-		if ($this->filename !== null && $this->filename !== '') return true;
-		if ($this->file !== null) return true;
-		return false;
-	}
-
-
-
 	public function getId(): ?int
     {
         return $this->id;
@@ -142,5 +131,14 @@ class Picture
         $this->trick = $trick;
         return $this;
     }
+
+	/**
+	 * @Assert\IsTrue(message="Vous avez oublié le fichier pour votre image !")
+	 */
+	public function hasFile() {
+		if ($this->filename !== null && $this->filename !== '') return true;
+		if ($this->file !== null) return true;
+		return false;
+	}
 
 }
