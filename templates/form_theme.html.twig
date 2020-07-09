@@ -83,11 +83,14 @@
             }
 
             $('#{{ id }}').on('click', '.btn-delete-item', function(e) { // On ajoute un listener sur le bouton de suppression
-                $(this).closest('.collection-item').remove(); // On supprime effectivement ce lien
-                e.preventDefault(); // Evite qu'un # apparaisse dans l'URL
-                return false;
+                if(confirm("Voulez-vous vraiment supprimer cette image ?")) {
+                    $(this).closest('.collection-item').remove(); // On supprime effectivement ce lien
+                    e.preventDefault(); // Evite qu'un # apparaisse dans l'URL
+                    return false;
+                } else {
+                    return false;
+                };
             });
-
         });
     </script>
 {% endblock %}

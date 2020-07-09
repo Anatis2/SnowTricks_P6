@@ -109,6 +109,14 @@ class AdminTrickController extends AbstractController
     }
 
 	/**
+	 * @Route("/suppressionImage", name="deletePicture")
+	 */
+    public function deletePicture()
+	{
+
+	}
+
+	/**
 	 * @return string
 	 */
 	private function generateUniqueFileName()
