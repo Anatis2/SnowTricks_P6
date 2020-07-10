@@ -35,4 +35,9 @@ services:
     App\Services\FileUploader:
         arguments:
             $targetDirectory: '%dir_uploads%'
+    App\EventListeners\RemoveFileListener:
+        arguments:
+            $targetDirectory: '%dir_uploads%'
+        tags:
+            - { name: 'doctrine.orm.entity_listener', event: 'postRemove', entity: 'App\Entity\Picture' }
 

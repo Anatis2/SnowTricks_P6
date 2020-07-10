@@ -28,7 +28,7 @@ class FileUploader
 
 		try {
 			$uploadedFile->move( // On envoie le fichier $newPictureFileName vers un dossier, dont le chemin est précisé dans services.yaml
-				$this->getTargetDirectory(),
+				$this->targetDirectory,
 				$newFileName
 			);
 		} catch (FileException $e) {
@@ -38,8 +38,4 @@ class FileUploader
 		$picture->setFilename($newFileName);
 	}
 
-	public function getTargetDirectory()
-	{
-		return $this->targetDirectory;
-	}
 }
