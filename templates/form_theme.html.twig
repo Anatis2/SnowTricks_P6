@@ -54,7 +54,7 @@
         {#- form_label(child) -#}
         {{- form_widget(child, widget_attr) -}}
         {{- form_help(child) -}}
-        <button class='btn btn-danger btn-sm btn-delete-item'>Supprimer l'image</button>
+        <button class='btn btn-danger btn-sm btn-delete-item' href="{{ path('deletePicture') }}">Supprimer l'image</button>
     </{{ element|default('div') }}>
 {% endblock %}
 
@@ -83,13 +83,13 @@
             }
 
             $('#{{ id }}').on('click', '.btn-delete-item', function(e) { // On ajoute un listener sur le bouton de suppression
+                var idImage = $(this)[0].id;
                 if(confirm("Voulez-vous vraiment supprimer cette image ?")) {
                     $(this).closest('.collection-item').remove(); // On supprime effectivement ce lien
-                    e.preventDefault(); // Evite qu'un # apparaisse dans l'URL
                     return false;
                 } else {
-                    return false;
-                };
+                    alert('ok');
+                }
             });
         });
     </script>

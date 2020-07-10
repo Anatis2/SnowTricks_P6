@@ -28,8 +28,6 @@ class Picture
 	 */
     private $file;
 
-    private $tempFilename; // permet de stocker le nom du fichier temporairement avant la suppression du fichier image
-
 	/**
 	 * @ORM\Column(type="string", length=255)
 	 * #Assert\NotBlank
@@ -73,22 +71,6 @@ class Picture
 	{
 		$this->file = $file;
 		return $this;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getTempFilename()
-	{
-		return $this->tempFilename;
-	}
-
-	/**
-	 * @param mixed $tempFilename
-	 */
-	public function setTempFilename($tempFilename): void
-	{
-		$this->tempFilename = $tempFilename;
 	}
 
 
@@ -157,16 +139,6 @@ class Picture
 		if ($this->filename !== null && $this->filename !== '') return true;
 		if ($this->file !== null) return true;
 		return false;
-	}
-
-	/**
-	 * @ORM\PostRemove()
-	 */
-	public function removeUpload()
-	{
-		if(file_exist($this->tempFilename)) {
-			unlink($this->tempFilename); // On supprime le fichier
-		}
 	}
 
 }

@@ -74,6 +74,8 @@ class AdminTrickController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
 
+        	dump($trick);
+
 			/**
 			 * @var UploadedFile $file
 			 */
@@ -87,7 +89,6 @@ class AdminTrickController extends AbstractController
             $this->addFlash('success', 'La figure a été modifiée avec succès !');
             return $this->redirectToRoute('adminHome');
         }
-
         return $this->render('admin/adminEditTrick.html.twig', [
             'form' => $form->createView(),
 			'trick' => $trick
@@ -109,11 +110,11 @@ class AdminTrickController extends AbstractController
     }
 
 	/**
-	 * @Route("/suppressionImage", name="deletePicture")
+	 * @Route("/suppression_image", name="deletePicture")
 	 */
-    public function deletePicture()
+    public function deletePicture(Request $request)
 	{
-
+		dump($request);
 	}
 
 	/**
