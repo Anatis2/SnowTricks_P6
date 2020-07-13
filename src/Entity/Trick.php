@@ -63,12 +63,18 @@ class Trick
      */
     private $pictures;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Video", mappedBy="trick")
+     */
+    private $videos;
+
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->messages = new ArrayCollection();
         $this->pictures = new ArrayCollection();
+        $this->videos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -112,26 +118,26 @@ class Trick
 	 * @return mixed
 	 */
 	public function getUpdatedAt()
-	{
-		return $this->updatedAt;
-	}
+               	{
+               		return $this->updatedAt;
+               	}
 
 	/**
 	 * @param mixed $updatedAt
 	 */
 	public function setUpdatedAt($updatedAt): void
-	{
-		$this->updatedAt = $updatedAt;
-	}
+               	{
+               		$this->updatedAt = $updatedAt;
+               	}
 
 	/**
 	 * @ORM\PreUpdate
 	 * @throws \Exception
 	 */
 	public function onPreUpdate()
-	{
-		$this->updatedAt = new DateTime();
-	}
+               	{
+               		$this->updatedAt = new DateTime();
+               	}
 
 
     public function getCategory(): ?Category
@@ -160,17 +166,17 @@ class Trick
 	 * @return mixed | null
 	 */
 	public function getPictureFileName()
-	{
-		return $this->pictureFileName;
-	}
+               	{
+               		return $this->pictureFileName;
+               	}
 
 	/**
 	 * @param mixed $pictureFileName
 	 */
 	public function setPictureFileName($pictureFileName)
-	{
-		$this->pictureFileName = $pictureFileName;
-	}
+               	{
+               		$this->pictureFileName = $pictureFileName;
+               	}
 
 
     /**
@@ -228,6 +234,37 @@ class Trick
                 $picture->setTrick(null);
             }
         }
+        return $this;
+    }
+
+    /**
+     * @return Collection|Video[]
+     */
+    public function getVideos(): Collection
+    {
+        return $this->videos;
+    }
+
+    public function addVideo(Video $video): self
+    {
+        if (!$this->videos->contains($video)) {
+            $this->videos[] = $video;
+            $video->setTrick($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVideo(Video $video): self
+    {
+        if ($this->videos->contains($video)) {
+            $this->videos->removeElement($video);
+            // set the owning side to null (unless already changed)
+            if ($video->getTrick() === $this) {
+                $video->setTrick(null);
+            }
+        }
+
         return $this;
     }
 }

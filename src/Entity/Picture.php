@@ -23,7 +23,9 @@ class Picture
 	/**
 	 * @Assert\File(
 	 *      maxSize = "1500k",
-	 *		mimeTypes = { "image/png" }
+	 *      maxSizeMessage = "Ce fichier ne doit pas dépasser 1500k",
+	 *		mimeTypes = { "image/png" },
+	 *      mimeTypesMessage = "Seuls les fichiers de type .png sont autorisés"
 	 * )
 	 */
     private $file;

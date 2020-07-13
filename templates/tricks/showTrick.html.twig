@@ -28,6 +28,12 @@
                         <img src="/uploads/{{ picture.filename }}" alt="image" class="gridPicturesImg">
                     </div>
                 {% endfor %}
+                {% for video in trick.videos %}
+                    <div class="col-2 gridPictures mb-4">
+                        <video src="{{ video.url }}" controls></video>
+                        <iframe src="{{ video.url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                {% endfor %}
             </div>
         </div>
 

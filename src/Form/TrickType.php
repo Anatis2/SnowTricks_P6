@@ -36,7 +36,8 @@ class TrickType extends AbstractType
 				'allow_delete' => true,
 				'label' => false,
 				'by_reference' => false
-			]);
+			])
+			;
     }
 
     public function configureOptions(OptionsResolver $resolver)
