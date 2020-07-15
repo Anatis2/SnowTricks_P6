@@ -49,6 +49,7 @@ class Trick
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="trick")
+	 * @ORM\OrderBy({"createdAt" = "DESC"})
      */
     private $messages;
 

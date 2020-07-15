@@ -34,7 +34,14 @@ class UserFixtures extends Fixture
                 "email" => "user@user.fr",
                 "password" => "user",
                 "roles" => []
-            ]
+            ],
+			[
+				"surname" => "User2",
+				"firstname" => "User2",
+				"email" => "user2@user2.fr",
+				"password" => "user2",
+				"roles" => []
+			],
         ];
         
         foreach($users as $k => $v) {

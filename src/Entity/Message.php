@@ -61,7 +61,6 @@ class Message
     public function setContent(string $content): self
     {
         $this->content = $content;
-
         return $this;
     }
 
@@ -73,7 +72,6 @@ class Message
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
 
@@ -85,7 +83,6 @@ class Message
     public function setTrick(?Trick $trick): self
     {
         $this->trick = $trick;
-
         return $this;
     }
 
@@ -97,7 +94,6 @@ class Message
     public function setUser(?User $user): self
     {
         $this->user = $user;
-
         return $this;
     }
 }

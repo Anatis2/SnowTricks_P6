@@ -64,12 +64,12 @@ class TrickFixtures extends Fixture implements DependentFixtureInterface
 					"user" => "admin@admin.fr"
 				],
 				[ "name" => "Backside Air",
-					"description" => "A compléter",
+					"description" => "Un Backside air, ca se fait sur un hit backside. Un hip comme ici, mais également en pipe ou sur n'importe quelle transition où la reception est face à vous quand vous êtes en l'air en saut droit. Si vous prenez un saut droit ou un transfert frontside, dans ce cas vous parlerez de 'method'.",
 					"category" => "Old school",
 					"user" => "admin@admin.fr"
 				],
 				[ "name" => "Method Air",
-					"description" => "A compléter",
+					"description" => "A compléter....",
 					"category" => "Old school",
 					"user" => "admin@admin.fr"
 				]
