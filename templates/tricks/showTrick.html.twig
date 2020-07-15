@@ -63,9 +63,16 @@
             {% if trick.messages is empty %}
                 <p>Il n'y a pas encore de commentaire associé à cette figure</p>
             {% else %}
+                <div class="container" style="text-align: center; margin: auto;">
                 {% for message in trick.messages %}
-                    <p>{{ message.content }}</p>
+                        <div class="row">
+                            <p style="text-align: center; margin: auto; margin-bottom: 20px;">
+                                <img src="/images/AvatarEmpty.jpg" alt="image d'avatar"/>
+                                <strong>{{ message.content }}</strong> (par {{ message.user.firstname }}, le <em>{{ message.createdAt | date('d/m/Y') }})</em>, à {{ message.createdAt | date('H:m') }}
+                            </p>
+                        </div>
                 {% endfor %}
+                </div>
             {% endif %}
         </div>
 
