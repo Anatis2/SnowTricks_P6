@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RegistrationType extends AbstractType
@@ -16,8 +18,14 @@ class RegistrationType extends AbstractType
             ->add('surname')
             ->add('firstname')
             ->add('email')
-            ->add('phonenumber', null, ['required' => false])
             ->add('password', PasswordType::class)
+			->add('phonenumber', null, ['required' => false])
+			->add('avatar',FileType::class, [
+				'label' => "Envoi d'un nouveau fichier",
+				'help' => "fichiers autorisés : .png",
+				'mapped' => true,
+				'required' => false,
+			])
         ;
     }
 

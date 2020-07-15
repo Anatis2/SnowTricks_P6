@@ -36,6 +36,21 @@ class User implements UserInterface, \Serializable
      */
     private $email;
 
+	/**
+	 * @Assert\File(
+	 *      maxSize = "1500k",
+	 *      maxSizeMessage = "Ce fichier ne doit pas dépasser 1500k",
+	 *		mimeTypes = { "image/png" },
+	 *      mimeTypesMessage = "Seuls les fichiers de type .png sont autorisés"
+	 * )
+	 */
+    private $avatar;
+
+	/**
+	 * @ORM\Column(type="string", length=255, unique=false, nullable=true)
+	 */
+    private $avatarFilename;
+
     /**
      * @ORM\Column(type="string", length=255, unique=false, nullable=true)
      */
@@ -114,6 +129,37 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
+	/**
+	 * @return mixed
+	 */
+	public function getAvatar()
+	{
+		return $this->avatar;
+	}
+
+	/**
+	 * @param mixed $avatar
+	 */
+	public function setAvatar($avatar)
+	{
+		$this->avatar = $avatar;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getAvatarFilename()
+	{
+		return $this->avatarFilename;
+	}
+
+	/**
+	 * @param mixed $avatarFilename
+	 */
+	public function setAvatarFilename($avatarFilename)
+	{
+		$this->avatarFilename = $avatarFilename;
+	}
 
     public function getPhonenumber(): ?string
     {
