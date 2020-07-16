@@ -51,6 +51,8 @@ class TrickController extends AbstractController
             $message->setUser($this->getUser());
             $manager->persist($message);
             $manager->flush();
+			$this->addFlash('success', 'Votre commentaire a bien été enregistré !');
+			return $this->redirect("/figure/" . $trick->getId());
         }
 
         return $this->render('tricks/showTrick.html.twig', [

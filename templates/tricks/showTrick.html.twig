@@ -14,6 +14,16 @@
             {% for picture in trick.pictures %}
                 {% if loop.index == 1 %}
                     <img src="/uploads/{{ picture.filename }}" alt="image">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 iconsImage1">
+                            <a href="{{ path('editTrick', {id: trick.id}) }}"><i class="fas fa-pencil-alt"></i></a>
+                            <form action="{{ path('deleteTrick', {id: trick.id}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
+                                <input type="hidden" name="_method" value="DELETE" />
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}" />
+                                <button class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </div>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
         {% endif %}
@@ -30,7 +40,6 @@
                 {% endfor %}
                 {% for video in trick.videos %}
                     <div class="col-2 gridPictures mb-4">
-                        <video src="{{ video.url }}" controls></video>
                         <iframe src="{{ video.url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 {% endfor %}
@@ -60,20 +69,22 @@
 
         <div class="trickComments">
             <h4>Commentaires</h4>
+            <br/>
             {% if trick.messages is empty %}
                 <p>Il n'y a pas encore de commentaire associé à cette figure</p>
             {% else %}
-                <div class="container" style="text-align: center; margin: auto; width: 30%;">
+                <div class="container col-6">
                 {% for message in trick.messages %}
-                        <div class="row">
-                            <p style="text-align: left; margin-bottom: 20px;">
+                        <div class="row" style="text-align: left; margin-bottom: 20px;">
                                 {% if message.user.avatarFilename is empty %}
-                                    <img src="/images/AvatarEmpty.jpg" alt="image d'avatar" style="width: 50px"/>
+                                    <img src="/images/AvatarEmpty.jpg" alt="image d'avatar" class="col-1 imageAvatar"/>
                                 {% else %}
-                                    <img src="/uploads/{{ message.user.avatarFilename }}" alt="image d'avatar" style="width: 50px"/>
+                                    <img src="/uploads/{{ message.user.avatarFilename }}" alt="image d'avatar" class="col-1 imageAvatar"/>
                                 {% endif %}
-                                <strong>{{ message.content }}</strong> (par {{ message.user.firstname }}, le <em>{{ message.createdAt | date('d/m/Y') }})</em>, à {{ message.createdAt | date('H:m') }}
-                            </p>
+                                <p class="col-11">
+                                    <strong>{{ message.content }}</strong> (par {{ message.user.firstname }},
+                                    le <em>{{ message.createdAt | date('d/m/Y') }})</em>, à {{ message.createdAt | date('H:m') }}
+                                </p>
                         </div>
                 {% endfor %}
                 </div>

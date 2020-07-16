@@ -13,18 +13,24 @@ class MessageFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
+
 		$messages = [
 			[	"trickName" => "Indy",
-				"content" => "Trop cool cette figure !",
-				"user" => "user@user.fr",
+				"content" => "Exemple de commentaire un peu plus long ........................................................................... 
+							  Exemple de commentaire un peu plus long",
+				"user" => "user2@user2.fr",
+			],
+			[	"trickName" => "Indy",
+				"content" => "Merci d'avoir créé ce site, il est sympa !",
+				"user" => "user2@user2.fr",
 			],
 			[	"trickName" => "Indy",
 				"content" => "Content qu'elle vous plaise ! Elle est pas mal pour débuter, n'hésitez pas à regarder des vidéos pour vous entraîner ;-)",
 				"user" => "admin@admin.fr",
 			],
 			[	"trickName" => "Indy",
-				"content" => "Merci d'avoir créé ce site, il est sympa !",
-				"user" => "user2@user2.fr",
+				"content" => "Trop cool cette figure !",
+				"user" => "user@user.fr",
 			],
 			[	"trickName" => "Mute",
 				"content" => "Simple mais tellement grisante :-D",

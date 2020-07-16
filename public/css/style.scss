@@ -30,7 +30,6 @@ body {
       }
     }
   }
-
   .coverTrick {
     width: 100%;
     height: auto;
@@ -47,6 +46,14 @@ body {
       h1 {
         background: rgba(228, 228, 228, 0.4);
       }
+    }
+    .iconsImage1 {
+      position: absolute;
+      top: 8px;
+      right: 6%;
+      background: rgba(228, 228, 228, 0.4);
+      min-width: 10px;
+      max-width: 90px;
     }
   }
   article {
@@ -92,6 +99,13 @@ body {
 
   .imgFormTheme {
       width: 20%;
+  }
+
+  .imageAvatar {
+    min-height: 36px;
+    max-height: 37px;
+    min-width: 65px;
+    max-width: 70px;
   }
 
 }

@@ -34,7 +34,7 @@
 {%- block collection_widget_rows -%}
     {# form_rows(form) #}
     {% for child in form|filter(child => not child.rendered) %}
-        {{  block('collection_widget_item') }}
+        {{ block('collection_widget_item') }}
     {% endfor %}
 {% endblock %}
 

@@ -15,24 +15,24 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
         $videos = [
         	[
 				"trickName" => "Indy",
-				"url" => "https://www.youtube.com/watch?v=iKkhKekZNQ8",
+				"url" => "https://www.youtube.com/embed/51sQRIK-TEI",
 			],
 			[
 				"trickName" => "Mute",
-				"url" => "https://www.youtube.com/watch?v=51sQRIK-TEI",
+				"url" => "https://www.youtube.com/embed/jm19nEvmZgM",
 			]
 		];
 
         foreach ($videos as $k => $v) {
         	$video = new Video();
 			$trick = $manager->getRepository(Trick::class)->findOneBy(["name" => $v['trickName']]);
+
+			$video
+				->setUrl($v['url'])
+				->setTrick($trick);
+
+			$manager->persist($video);
 		}
-
-        $video
-			->setUrl($v['url'])
-			->setTrick($trick);
-
-        $manager->persist($video);
 
         $manager->flush();
     }

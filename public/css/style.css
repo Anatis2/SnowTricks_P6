@@ -43,6 +43,13 @@ body {
       margin-left: 45%; }
       body .coverTrick .coverTrickTitle h1 {
         background: rgba(228, 228, 228, 0.4); }
+    body .coverTrick .iconsImage1 {
+      position: absolute;
+      top: 8px;
+      right: 6%;
+      background: rgba(228, 228, 228, 0.4);
+      min-width: 10px;
+      max-width: 90px; }
   body article {
     display: inline-block;
     text-align: center; }
@@ -73,5 +80,10 @@ body {
     opacity: 1; }
   body .imgFormTheme {
     width: 20%; }
+  body .imageAvatar {
+    min-height: 36px;
+    max-height: 37px;
+    min-width: 65px;
+    max-width: 70px; }
 
 /*# sourceMappingURL=style.css.map */

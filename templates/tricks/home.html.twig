@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <article class="container-fluid">
+    <article class="container-fluid" id="tricksArticle">
 
         <div class="homeCards">
             {% for trick in tricks %}
@@ -39,7 +39,6 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}" />
                                         <button class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
                                     </form>
-                                    
                                 </div>
                             {% endif %}
                         </div>
