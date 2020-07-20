@@ -102,8 +102,7 @@ class AdminTrickController extends AbstractController
             $manager->remove($trick);
             $manager->flush();
             $this->addFlash('success', 'La figure a été supprimée avec succès !');
+			return $this->redirectToRoute('adminHome');
         }
-
-        return $this->redirectToRoute('adminHome');
     }
 }

@@ -1,0 +1,18 @@
+
+<div class="container col-6">
+    <div id="commentsDiv">
+        {% set max = 0 %}
+        {% for message in trick.messages | slice(0, max) %}
+            <div class="row" style="text-align: left; margin-bottom: 20px;">
+                {% if message.user.avatarFilename is empty %}
+                    <img src="/images/AvatarEmpty.jpg" alt="image d'avatar" class="col-1 imageAvatar"/>
+                {% else %}
+                    <img src="/uploads/{{ message.user.avatarFilename }}" alt="image d'avatar" class="col-1 imageAvatar"/>
+                {% endif %}
+                <p class="col-11">
+                    <strong>{{ message.content }}</strong> (par {{ message.user.firstname }},
+                    le <em>{{ message.createdAt | date('d/m/Y') }})</em>, à {{ message.createdAt | date('H:m') }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>

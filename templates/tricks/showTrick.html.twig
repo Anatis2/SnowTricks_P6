@@ -27,6 +27,12 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
+
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success col-3">
+                {{ message }}
+            </div>
+        {% endfor %}
     </div>
 
     <article class="container-fluid">
@@ -73,20 +79,8 @@
             {% if trick.messages is empty %}
                 <p>Il n'y a pas encore de commentaire associé à cette figure</p>
             {% else %}
-                <div class="container col-6">
-                {% for message in trick.messages %}
-                        <div class="row" style="text-align: left; margin-bottom: 20px;">
-                                {% if message.user.avatarFilename is empty %}
-                                    <img src="/images/AvatarEmpty.jpg" alt="image d'avatar" class="col-1 imageAvatar"/>
-                                {% else %}
-                                    <img src="/uploads/{{ message.user.avatarFilename }}" alt="image d'avatar" class="col-1 imageAvatar"/>
-                                {% endif %}
-                                <p class="col-11">
-                                    <strong>{{ message.content }}</strong> (par {{ message.user.firstname }},
-                                    le <em>{{ message.createdAt | date('d/m/Y') }})</em>, à {{ message.createdAt | date('H:m') }}
-                                </p>
-                        </div>
-                {% endfor %}
+                {{ include('tricks/showMessages.html.twig') }}
+                <a href="" id="loadMoreMessages">Charger plus de messages</a>
                 </div>
             {% endif %}
         </div>
@@ -95,5 +89,9 @@
 
     </article>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/loadMoreMessages.js')}}"></script>
 {% endblock %}
 
