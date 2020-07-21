@@ -84,7 +84,7 @@
 
                     </div>
                     <br/>
-                    <button id="loadMoreMessages">Charger les messages</button>
+                    <button class="btn btn-outline-dark" id="loadMoreMessages">Charger les messages</button>
                 </div>
             {% endif %}
         </div>
@@ -107,6 +107,9 @@
             url: "{{ path('loadMessages', {'id': trick.id, 'limit': '__LIMIT__', 'offset': '__OFFSET__' }) }}".replace('__LIMIT__', limit).replace('__OFFSET__', offset),
             success: function(messages) {
                 $commentsDiv.append(messages);
+                if($(messages).find(".comment").length > 1) {
+                    $loadMoreMessagesLink.text('Charger plus de messages');
+                };
                 if($(messages).find(".comment").length < limit) {
                     $loadMoreMessagesLink.hide();
                 };
@@ -117,6 +120,3 @@
         })
     });
 {% endblock %}
-
-
-           {# url: "{{ path('loadMessages', {'id': trick.id, 'limit': 10, 'offset': '__OFFSET__' }) }}" . replace('__OFFSET__', offset)) }}", #}
