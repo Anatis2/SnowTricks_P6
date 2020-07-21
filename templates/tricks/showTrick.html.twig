@@ -79,8 +79,12 @@
             {% if trick.messages is empty %}
                 <p>Il n'y a pas encore de commentaire associé à cette figure</p>
             {% else %}
-                {{ include('tricks/showMessages.html.twig') }}
-                <a href="" id="loadMoreMessages">Charger plus de messages</a>
+                <div class="container col-6">
+                    <div id="commentsDiv">
+
+                    </div>
+                    <br/>
+                <button id="loadMoreMessages">Charger les messages</button>
                 </div>
             {% endif %}
         </div>
@@ -91,7 +95,24 @@
 
 {% endblock %}
 
-{% block javascripts %}
-    <script type="text/javascript" src="{{ asset('js/loadMoreMessages.js')}}"></script>
+{% block javascript_ready %}
+    var $loadMoreMessagesLink = $("#loadMoreMessages");
+    var $commentsDiv = $("#commentsDiv");
+
+    $loadMoreMessagesLink.on("click", function(e) {
+        var offset = 0;
+        $.ajax({
+            type: 'GET',
+            url: "{{ path('loadMessages', {'id': trick.id }) }} ",
+            success: function(messages) {
+                $commentsDiv.append("OK");
+            },
+            error: function(error) {
+                alert(dump(error));
+            }
+        })
+    });
 {% endblock %}
 
+
+{#             url: "{{ path('loadMessages', {'id': trick.id, 'limit': 10, 'offset': '__OFFSET__' }) }}" . replace('__OFFSET__', offset)) }}", #}

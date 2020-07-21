@@ -64,13 +64,15 @@ class TrickController extends AbstractController
     }
 
 	/**
-	 * @Route("/figure/testMessages", name="loadMessages")
+	 * @Route("/figure/{id}/messages/{offset}/{limit}", name="loadMessages", defaults={"offset"=0, "limit"=5})
 	 */
-    public function loadMessages(Message $messages, Request $request, EntityManagerInterface $manager)
+    public function loadMessages()
 	{
-		return $this->render('tricks/showTrick.html.twig', [
-			'messages' => $messages
-		]);
+		// id de la figure
+		// nb de messages déjà affichés ($offset)
+		// nb de messages à récupérer ($limit)
+		return $this->render('tricks/showMessages.html.twig');
+
 	}
 
 }
