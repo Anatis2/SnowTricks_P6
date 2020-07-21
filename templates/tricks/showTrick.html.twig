@@ -84,7 +84,7 @@
 
                     </div>
                     <br/>
-                <button id="loadMoreMessages">Charger les messages</button>
+                    <button id="loadMoreMessages">Charger les messages</button>
                 </div>
             {% endif %}
         </div>
@@ -100,19 +100,23 @@
     var $commentsDiv = $("#commentsDiv");
 
     $loadMoreMessagesLink.on("click", function(e) {
-        var offset = 0;
+        var limit = 5;
+        var offset = $commentsDiv.find(".comment").length;
         $.ajax({
             type: 'GET',
-            url: "{{ path('loadMessages', {'id': trick.id }) }} ",
+            url: "{{ path('loadMessages', {'id': trick.id, 'limit': '__LIMIT__', 'offset': '__OFFSET__' }) }}".replace('__LIMIT__', limit).replace('__OFFSET__', offset),
             success: function(messages) {
-                $commentsDiv.append("OK");
+                $commentsDiv.append(messages);
+                if($(messages).find(".comment").length < limit) {
+                    $loadMoreMessagesLink.hide();
+                };
             },
             error: function(error) {
-                alert(dump(error));
+                alert("Il y a eu une erreur lors du chargement des commentaires");
             }
         })
     });
 {% endblock %}
 
 
-{#             url: "{{ path('loadMessages', {'id': trick.id, 'limit': 10, 'offset': '__OFFSET__' }) }}" . replace('__OFFSET__', offset)) }}", #}
+           {# url: "{{ path('loadMessages', {'id': trick.id, 'limit': 10, 'offset': '__OFFSET__' }) }}" . replace('__OFFSET__', offset)) }}", #}

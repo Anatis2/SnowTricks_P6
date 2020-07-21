@@ -66,13 +66,12 @@ class TrickController extends AbstractController
 	/**
 	 * @Route("/figure/{id}/messages/{offset}/{limit}", name="loadMessages", defaults={"offset"=0, "limit"=5})
 	 */
-    public function loadMessages()
+    public function loadMessages($id, $limit, $offset, MessageRepository $repo)
 	{
-		// id de la figure
-		// nb de messages déjà affichés ($offset)
-		// nb de messages à récupérer ($limit)
-		return $this->render('tricks/showMessages.html.twig');
-
+		return $this->render('tricks/showMessages.html.twig', [
+			// (1ère méthode) : 'messages' => $trick->getMessages()->slice($offset, $limit),
+			'messages' => $repo->findMessages($id, $limit, $offset),
+		]);
 	}
 
 }
