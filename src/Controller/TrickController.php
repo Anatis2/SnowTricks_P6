@@ -7,7 +7,9 @@ use App\Entity\Trick;
 use App\Entity\Message;
 use App\Form\TrickType;
 use App\Form\MessageType;
+use App\Repository\MessageRepository;
 use App\Repository\TrickRepository;
+use App\Services\CommentsLoader;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -51,7 +53,7 @@ class TrickController extends AbstractController
             $message->setUser($this->getUser());
             $manager->persist($message);
             $manager->flush();
-			$this->addFlash('success', 'Votre commentaire a bien été enregistré !');
+			$this->addFlash('notice', 'Votre commentaire a bien été enregistré !');
 			return $this->redirect("/figure/" . $trick->getId());
         }
 
@@ -60,5 +62,16 @@ class TrickController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+	/**
+	 * @Route("/figure/{id}/messages/{offset}/{limit}", name="loadMessages", defaults={"offset"=0, "limit"=5})
+	 */
+    public function loadMessages($id, $limit, $offset, MessageRepository $repo)
+	{
+		return $this->render('tricks/showMessages.html.twig', [
+			// (1ère méthode) : 'messages' => $trick->getMessages()->slice($offset, $limit),
+			'messages' => $repo->findMessages($id, $limit, $offset),
+		]);
+	}
 
 }

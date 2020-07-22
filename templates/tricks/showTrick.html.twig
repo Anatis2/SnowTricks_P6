@@ -27,6 +27,12 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
+
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success col-3">
+                {{ message }}
+            </div>
+        {% endfor %}
     </div>
 
     <article class="container-fluid">
@@ -74,19 +80,11 @@
                 <p>Il n'y a pas encore de commentaire associé à cette figure</p>
             {% else %}
                 <div class="container col-6">
-                {% for message in trick.messages %}
-                        <div class="row" style="text-align: left; margin-bottom: 20px;">
-                                {% if message.user.avatarFilename is empty %}
-                                    <img src="/images/AvatarEmpty.jpg" alt="image d'avatar" class="col-1 imageAvatar"/>
-                                {% else %}
-                                    <img src="/uploads/{{ message.user.avatarFilename }}" alt="image d'avatar" class="col-1 imageAvatar"/>
-                                {% endif %}
-                                <p class="col-11">
-                                    <strong>{{ message.content }}</strong> (par {{ message.user.firstname }},
-                                    le <em>{{ message.createdAt | date('d/m/Y') }})</em>, à {{ message.createdAt | date('H:m') }}
-                                </p>
-                        </div>
-                {% endfor %}
+                    <div id="commentsDiv">
+
+                    </div>
+                    <br/>
+                    <button class="btn btn-outline-dark" id="loadMoreMessages">Charger les messages</button>
                 </div>
             {% endif %}
         </div>
@@ -97,3 +95,28 @@
 
 {% endblock %}
 
+{% block javascript_ready %}
+    var $loadMoreMessagesLink = $("#loadMoreMessages");
+    var $commentsDiv = $("#commentsDiv");
+
+    $loadMoreMessagesLink.on("click", function(e) {
+        var limit = 5;
+        var offset = $commentsDiv.find(".comment").length;
+        $.ajax({
+            type: 'GET',
+            url: "{{ path('loadMessages', {'id': trick.id, 'limit': '__LIMIT__', 'offset': '__OFFSET__' }) }}".replace('__LIMIT__', limit).replace('__OFFSET__', offset),
+            success: function(messages) {
+                $commentsDiv.append(messages);
+                if($(messages).find(".comment").length > 1) {
+                    $loadMoreMessagesLink.text('Charger plus de messages');
+                };
+                if($(messages).find(".comment").length < limit) {
+                    $loadMoreMessagesLink.hide();
+                };
+            },
+            error: function(error) {
+                alert("Il y a eu une erreur lors du chargement des commentaires");
+            }
+        })
+    });
+{% endblock %}
