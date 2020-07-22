@@ -4,11 +4,15 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationType;
+use App\Repository\UserRepository;
 use App\Services\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -19,7 +23,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/inscription", name="registration")
      */
-    public function registration(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder, FileUploader $fileUploader)
+    public function registration(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder, FileUploader $fileUploader, MailerInterface $mailer)
     {
         $user = new User();
 
@@ -30,10 +34,21 @@ class SecurityController extends AbstractController
         if ($registrationForm->isSubmitted() && $registrationForm->isValid()) {
             $password = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
+			$user->setActivationToken(md5(uniqid()));
 			$fileUploader->uploadAvatar($user);
             $manager->persist($user);
             $manager->flush();
-            $this->addFlash('success', 'Votre inscription a bien été prise en compte ! <br/> Vous pouvez vous connecter ;-)');
+			$email = (new TemplatedEmail())
+				->from('claire.coubard@gmail.com')
+				->to('claire.coubard.test@gmail.com')
+				->subject('Activation de votre compte SnowTricks!')
+				->htmlTemplate('security/activation.html.twig')
+				->context([
+					'token' => $user->getActivationToken()
+				])
+			;
+			$mailer->send($email);
+            $this->addFlash('success', 'Votre inscription a bien été prise en compte ! <br/> Un email de confirmation vient de vous être envoyé.');
             return $this->redirectToRoute('login');
         }
 
@@ -41,6 +56,31 @@ class SecurityController extends AbstractController
             'registrationForm' => $registrationForm->createView()
         ]);
     }
+
+	/**
+	 * @Route("/activation/{token}", name="activation")
+	 */
+	public function activation($token, UserRepository $repo, EntityManagerInterface $manager)
+	{
+		// On recherche si un utilisateur avec ce token existe dans la base de données
+		$user = $repo->findOneBy(['activation_token' => $token]);
+
+		// Si aucun utilisateur n'est associé à ce token
+		if(!$user){
+			// On renvoie une erreur 404
+			throw $this->createNotFoundException('Cet utilisateur n\'existe pas');
+		}
+
+		// On supprime le token
+		//$user->setActivationToken(null);
+		$manager->persist($user);
+		$manager->flush();
+
+		// On génère un message
+		$this->addFlash('message', 'Votre compte a bien été activé ! Vous pouvez désormais vous connecter \o/');
+		// On retourne à l'accueil
+		return $this->redirectToRoute('login');
+	}
 
     /**
      * @Route("/login", name="login")

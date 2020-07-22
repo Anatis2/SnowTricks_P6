@@ -72,6 +72,11 @@ class User implements UserInterface, \Serializable
      */
     private $password;
 
+	/**
+	 * @ORM\Column(type="string", length=255, nullable=true)
+	 */
+	private $activation_token;
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="user")
      */
@@ -224,6 +229,23 @@ class User implements UserInterface, \Serializable
         $this->password = $password;
         return $this;
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getActivationToken()
+	{
+		return $this->activation_token;
+	}
+
+	/**
+	 * @param mixed $activation_token
+	 */
+	public function setActivationToken($activation_token)
+	{
+		$this->activation_token = $activation_token;
+	}
+
 
     public function getMessages(): Collection
     {

@@ -47,6 +47,8 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('logout') }}">Déconnexion</a>
                             </li>
+                        </ul>
+                            <p style="text-align: right">{{ app.user.email }}</p>
                         {% endif %}
                     </ul>
                 </div>

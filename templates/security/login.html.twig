@@ -11,7 +11,12 @@
                 <div class="alert alert-success">
                     {{ message | raw }}
                 </div>
+            {% endfor %}
 
+            {% for message in app.flashes('message') %}
+                <div class="alert alert-success">
+                    {{ message | raw }}
+                </div>
             {% endfor %}
 
             {% if error %}
