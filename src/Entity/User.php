@@ -82,6 +82,11 @@ class User implements UserInterface, \Serializable
 	 */
 	private $activated_token;
 
+	/**
+	 * @ORM\Column(type="string", length=255, nullable=true)
+	 */
+	private $reset_token;
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="user")
      */
@@ -266,6 +271,22 @@ class User implements UserInterface, \Serializable
 	{
 		$this->activated_token = $activated_token;
 		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getResetToken()
+	{
+		return $this->reset_token;
+	}
+
+	/**
+	 * @param mixed $reset_token
+	 */
+	public function setResetToken($reset_token)
+	{
+		$this->reset_token = $reset_token;
 	}
 
 

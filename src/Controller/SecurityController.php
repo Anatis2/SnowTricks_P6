@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationType;
+use App\Form\ResetPassType;
 use App\Repository\UserRepository;
 use App\Services\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,8 +16,10 @@ use Symfony\Component\Mime\Email;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class SecurityController extends AbstractController
 {
@@ -73,7 +76,7 @@ class SecurityController extends AbstractController
 		}
 
 		// On supprime le token
-		$user->setActivationToken(null);
+		//$user->setActivationToken(null);
 		$user->setActivatedToken(1);
 		$manager->persist($user);
 		$manager->flush();
@@ -110,4 +113,91 @@ class SecurityController extends AbstractController
     {
         throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
     }
+
+	/**
+	 * @Route("/password", name="forgotPassword")
+	 */
+    public function forgotPassword(Request $request, UserRepository $repo, TokenGeneratorInterface $tokenGenerator, EntityManagerInterface $manager, MailerInterface $mailer)
+	{
+		$form = $this->createForm(ResetPassType::class);
+		$form->handleRequest($request);
+
+		if($form->isSubmitted() && $form->isValid()) {
+			$data = $form->getData();
+
+			$user = $repo->findOneBy(['email' => $data['email']]);
+
+			if ($user === null) {
+				$this->addFlash('danger', 'Cette adresse e-mail est inconnue');
+				return $this->redirectToRoute('login');
+			}
+
+			$token = $tokenGenerator->generateToken();
+
+			try {
+				$user->setResetToken($token);
+				$manager->persist($user);
+				$manager->flush();
+			} catch (\Exception $e) {
+				$this->addFlash('danger', $e->getMessage());
+				return $this->redirectToRoute('login');
+			}
+
+			// On génère l'URL de réinitialisation de mot de passe
+			$url = $this->generateUrl('resetPassword', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
+
+			// On génère l'email
+			$email = (new TemplatedEmail())
+				->from('claire.coubard@gmail.com')
+				->to($user->getEmail())
+				->subject('Activation de votre compte SnowTricks!')
+				->htmlTemplate('security/resetPwdMail.html.twig')
+				->context([
+					'url' => $url,
+					'token' => $token
+				]);
+
+				$mailer->send($email);
+				$this->addFlash('message', 'Un email vient de vous être envoyé. Veuillez le consulter pour pouvoir réinitialiser votre mot de passe.');
+				return $this->redirectToRoute('login');
+
+		}
+
+		return $this->render('security/forgotPassword.html.twig', [
+			'form' => $form->createView()
+		]);
+	}
+
+	/**
+	 * @Route("/resetPassword/{token}", name="resetPassword")
+	 */
+	public function resetPassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder, UserRepository $repo, EntityManagerInterface $manager)
+	{
+		$user = $repo->findOneBy(['reset_token' => $token]);
+
+		// Si l'utilisateur n'existe pas
+		if ($user === null) {
+			// On affiche une erreur
+			$this->addFlash('danger', 'Token inconnu !');
+			return $this->redirectToRoute('login');
+		}
+
+		// Si le formulaire est envoyé en méthode post
+		if ($request->isMethod('POST')) {
+			// On supprime le token
+			$user->setResetToken(null);
+			// On chiffre le mot de passe
+			$user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
+
+			$manager->persist($user);
+			$manager->flush();
+			$this->addFlash('message', 'Votre mot de passe mis à jour');
+			return $this->redirectToRoute('login');
+		} else {
+			// Si on n'a pas reçu les données, on affiche le formulaire
+			return $this->render('security/resetPassword.html.twig', [
+				'token' => $token
+			]);
+		}
+	}
 }
