@@ -18,6 +18,7 @@ security:
         main:
             anonymous: lazy
             provider: from_database
+            user_checker: App\Security\UserChecker
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator

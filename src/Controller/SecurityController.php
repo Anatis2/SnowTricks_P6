@@ -40,7 +40,7 @@ class SecurityController extends AbstractController
             $manager->flush();
 			$email = (new TemplatedEmail())
 				->from('claire.coubard@gmail.com')
-				->to('claire.coubard.test@gmail.com')
+				->to($user->getEmail())
 				->subject('Activation de votre compte SnowTricks!')
 				->htmlTemplate('security/activation.html.twig')
 				->context([
@@ -62,6 +62,7 @@ class SecurityController extends AbstractController
 	 */
 	public function activation($token, UserRepository $repo, EntityManagerInterface $manager)
 	{
+
 		// On recherche si un utilisateur avec ce token existe dans la base de données
 		$user = $repo->findOneBy(['activation_token' => $token]);
 
@@ -72,14 +73,18 @@ class SecurityController extends AbstractController
 		}
 
 		// On supprime le token
-		//$user->setActivationToken(null);
+		$user->setActivationToken(null);
+		$user->setActivatedToken(1);
 		$manager->persist($user);
 		$manager->flush();
 
 		// On génère un message
 		$this->addFlash('message', 'Votre compte a bien été activé ! Vous pouvez désormais vous connecter \o/');
+
 		// On retourne à l'accueil
-		return $this->redirectToRoute('login');
+		return $this->redirectToRoute('login', [
+			'user' => $user
+		]);
 	}
 
     /**

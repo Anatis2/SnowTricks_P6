@@ -77,6 +77,11 @@ class User implements UserInterface, \Serializable
 	 */
 	private $activation_token;
 
+	/**
+	 * @ORM\Column(type="boolean", nullable=true, options={"default" : 0}))
+	 */
+	private $activated_token;
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="user")
      */
@@ -244,6 +249,23 @@ class User implements UserInterface, \Serializable
 	public function setActivationToken($activation_token)
 	{
 		$this->activation_token = $activation_token;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getActivatedToken()
+	{
+		return $this->activated_token;
+	}
+
+	/**
+	 * @param mixed $activated_token
+	 */
+	public function setActivatedToken($activated_token)
+	{
+		$this->activated_token = $activated_token;
+		return $this;
 	}
 
 
