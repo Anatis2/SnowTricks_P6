@@ -28,7 +28,12 @@
         </div>
     </div>
     {{ block('collection_widget_js') }}
-    <button id="{{ id }}_add" class="btn btn-outline-dark">Ajouter une image</button>
+    {% if(id=="trick_pictures") %}
+        <button id="{{ id }}_add" class="btn btn-outline-dark">Ajouter une image</button>
+    {% endif %}
+    {% if(id=="trick_videos") %}
+        <button id="{{ id }}_add" class="btn btn-outline-dark">Ajouter une vidéo</button>
+    {% endif %}
 {%  endblock %}
 
 {%- block collection_widget_rows -%}
@@ -52,7 +57,12 @@
         {#- form_label(child) -#}
         {{- form_widget(child, widget_attr) -}}
         {{- form_help(child) -}}
+    {% if(id=="trick_pictures") %}
         <button class='btn btn-danger btn-sm btn-delete-item'>Supprimer l'image</button>
+    {% endif %}
+    {% if(id=="trick_videos") %}
+        <button class='btn btn-danger btn-sm btn-delete-item'>Supprimer la vidéo</button>
+    {% endif %}
     </{{ element|default('div') }}>
 {% endblock %}
 
@@ -81,7 +91,13 @@
             }
 
             $('#{{ id }}').on('click', '.btn-delete-item', function(e) { // On ajoute un listener sur le bouton de suppression
-                if(confirm("Voulez-vous vraiment supprimer cette image ?")) {
+                {% if(id=="trick_pictures") %}
+                    var alert = "Voulez-vous vraiment supprimer cette image ?";
+                {% endif %}
+                {% if(id=="trick_videos") %}
+                    var alert = "Voulez-vous vraiment supprimer cette vidéo ?";
+                {% endif %}
+                if(confirm(alert)) {
                     $(this).closest('.collection-item').remove(); // On supprime effectivement ce lien
                     return false;
                 } else {
