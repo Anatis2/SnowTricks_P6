@@ -15,11 +15,11 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
         $videos = [
         	[
 				"trickName" => "Indy",
-				"url" => "https://www.youtube.com/embed/51sQRIK-TEI",
+				"url" => "<iframe width=\"1215\" height=\"683\" src=\"https://www.youtube.com/embed/51sQRIK-TEI\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
 			],
 			[
 				"trickName" => "Mute",
-				"url" => "https://www.youtube.com/embed/jm19nEvmZgM",
+				"url" => "<iframe width=\"1215\" height=\"683\" src=\"https://www.youtube.com/embed/jm19nEvmZgM\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
 			]
 		];
 
