@@ -27,6 +27,7 @@ class UserFixtures extends Fixture
                 "email" => "admin@admin.fr",
                 "password" => "admin",
 				"avatarFilename" => "Avatar2.png",
+				"activated_token" => "1",
                 "roles" => ["ROLE_ADMIN"],
             ],
             [
@@ -35,6 +36,7 @@ class UserFixtures extends Fixture
                 "email" => "user@user.fr",
                 "password" => "user",
 				"avatarFilename" => "Avatar1.png",
+				"activated_token" => "1",
                 "roles" => []
             ],
 			[
@@ -43,6 +45,7 @@ class UserFixtures extends Fixture
 				"email" => "user2@user2.fr",
 				"password" => "user2",
 				"avatarFilename" => "Avatar3.png",
+				"activated_token" => "1",
 				"roles" => []
 			],
         ];
@@ -58,7 +61,7 @@ class UserFixtures extends Fixture
                  ->setPassword($pwdHash)
 				 ->setRoles($v['roles'])
 				 ->setAvatarFilename($v['avatarFilename'])
-
+				 ->setActivatedToken($v['activated_token'])
             ;
 
             $manager->persist($user);

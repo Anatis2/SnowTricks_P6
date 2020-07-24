@@ -174,6 +174,7 @@ class User implements UserInterface, \Serializable
 	public function setAvatarFilename($avatarFilename)
 	{
 		$this->avatarFilename = $avatarFilename;
+		return $this;
 	}
 
     public function getPhonenumber(): ?string

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\EnterNewPwdType;
 use App\Form\RegistrationType;
 use App\Form\ResetPassType;
 use App\Repository\UserRepository;
@@ -173,6 +174,9 @@ class SecurityController extends AbstractController
 	 */
 	public function resetPassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder, UserRepository $repo, EntityManagerInterface $manager)
 	{
+		$form = $this->createForm(EnterNewPwdType::class);
+		$form->handleRequest($request);
+
 		$user = $repo->findOneBy(['reset_token' => $token]);
 
 		// Si l'utilisateur n'existe pas
@@ -182,21 +186,23 @@ class SecurityController extends AbstractController
 			return $this->redirectToRoute('login');
 		}
 
-		// Si le formulaire est envoyé en méthode post
-		if ($request->isMethod('POST')) {
+		if($form->isSubmitted() && $form->isValid()) {
+			$data = $form->getData();
 			// On supprime le token
 			$user->setResetToken(null);
 			// On chiffre le mot de passe
-			$user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
+			$password = $passwordEncoder->encodePassword($user, $data['password']);
+			$user->setPassword($password);
 
 			$manager->persist($user);
 			$manager->flush();
-			$this->addFlash('message', 'Votre mot de passe mis à jour');
+			$this->addFlash('message', 'Votre mot de passe a été mis à jour. <br/> Vous pouvez vous connecter avec votre nouveau mot de passe');
 			return $this->redirectToRoute('login');
 		} else {
 			// Si on n'a pas reçu les données, on affiche le formulaire
 			return $this->render('security/resetPassword.html.twig', [
-				'token' => $token
+				'token' => $token,
+				'form' => $form->createView()
 			]);
 		}
 	}
