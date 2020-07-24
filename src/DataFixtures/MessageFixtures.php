@@ -16,6 +16,18 @@ class MessageFixtures extends Fixture implements DependentFixtureInterface
 
 		$messages = [
 			[	"trickName" => "Indy",
+				"content" => "Next !",
+				"user" => "user2@user2.fr",
+			],
+			[	"trickName" => "Indy",
+				"content" => "C'est bon je maîtrise cette figure !",
+				"user" => "user2@user2.fr",
+			],
+			[	"trickName" => "Indy",
+				"content" => "Si vous souhaitez un tuto en live, on pourrait s'organiser un aprem !",
+				"user" => "user@user.fr",
+			],
+			[	"trickName" => "Indy",
 				"content" => "Exemple de commentaire un peu plus long ........................................................................... 
 							  Exemple de commentaire un peu plus long",
 				"user" => "user2@user2.fr",

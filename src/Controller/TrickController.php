@@ -51,6 +51,7 @@ class TrickController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $message->setUser($this->getUser());
+            $message->setCreatedAt(new \DateTime());
             $manager->persist($message);
             $manager->flush();
 			$this->addFlash('notice', 'Votre commentaire a bien été enregistré !');

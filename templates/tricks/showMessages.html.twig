@@ -10,7 +10,7 @@
             {% endif %}
             <p class="col-11">
                 <strong>{{ message.content }}</strong> (par {{ message.user.firstname }},
-                le <em>{{ message.createdAt | date('d/m/Y') }})</em>, à {{ message.createdAt | date('H:m') }}
+                le <em>{{ message.createdAt | date('d/m/Y') }})</em>, à {{ message.createdAt | date('H:i') }}
             </p>
         </div>
     {% endfor %}

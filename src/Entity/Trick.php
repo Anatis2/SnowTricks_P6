@@ -121,26 +121,26 @@ class Trick
 	 * @return mixed
 	 */
 	public function getUpdatedAt()
-               	{
-               		return $this->updatedAt;
-               	}
+	{
+		return $this->updatedAt;
+	}
 
 	/**
 	 * @param mixed $updatedAt
 	 */
 	public function setUpdatedAt($updatedAt): void
-               	{
-               		$this->updatedAt = $updatedAt;
-               	}
+	{
+		$this->updatedAt = $updatedAt;
+	}
 
 	/**
 	 * @ORM\PreUpdate
 	 * @throws \Exception
 	 */
 	public function onPreUpdate()
-               	{
-               		$this->updatedAt = new DateTime();
-               	}
+	{
+		$this->updatedAt = new DateTime();
+	}
 
 
     public function getCategory(): ?Category
@@ -169,17 +169,17 @@ class Trick
 	 * @return mixed | null
 	 */
 	public function getPictureFileName()
-               	{
-               		return $this->pictureFileName;
-               	}
+	{
+		return $this->pictureFileName;
+	}
 
 	/**
 	 * @param mixed $pictureFileName
 	 */
 	public function setPictureFileName($pictureFileName)
-               	{
-               		$this->pictureFileName = $pictureFileName;
-               	}
+	{
+		$this->pictureFileName = $pictureFileName;
+	}
 
 
     /**

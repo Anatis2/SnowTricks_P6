@@ -24,6 +24,7 @@ class MessageRepository extends ServiceEntityRepository
 		return $this->createQueryBuilder('m')
 			->where("m.trick = :id")
 			->setParameter('id', $id)
+			->orderBy('m.createdAt','DESC')
 			->setMaxResults($limit)
 			->setFirstResult($offset)
 			->getQuery()
