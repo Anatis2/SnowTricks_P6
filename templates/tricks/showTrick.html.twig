@@ -37,7 +37,7 @@
         {% endif %}
 
         {% for message in app.flashes('notice') %}
-            <div class="alert alert-success col-3">
+            <div class="alert alert-success col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                 {{ message }}
             </div>
         {% endfor %}
@@ -87,7 +87,7 @@
             {% if trick.messages is empty %}
                 <p>Il n'y a pas encore de commentaire associé à cette figure</p>
             {% else %}
-                <div class="container col-6">
+                <div class="container">
                     <div id="commentsDiv">
 
                     </div>
@@ -98,6 +98,7 @@
         </div>
 
         <p><a href="{{ path('home')}}">Retour à la page d'accueil...</a></p>
+
 
     </article>
 

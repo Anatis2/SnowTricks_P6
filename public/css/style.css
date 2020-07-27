@@ -1,7 +1,14 @@
 @charset "UTF-8";
+/**
+    Extra small (<539px)
+ */
 body {
   width: 100%;
-  margin-bottom: 40px; }
+  margin-bottom: 2%; }
+  body p {
+    font-size: 0.9em; }
+  body h1 {
+    font-size: 1.4em; }
   body .coverHome {
     width: 100%;
     height: 100vh;
@@ -16,9 +23,10 @@ body {
     padding: 0 20px;
     position: relative; }
     body .coverHome .coverHomeText {
+      width: 97%;
+      margin-left: 2%;
       background: rgba(228, 228, 228, 0.4);
-      width: 50%;
-      margin-left: 25%; }
+      padding: 20px; }
     body .coverHome #arrowDownIcon {
       position: absolute;
       right: 0;
@@ -27,6 +35,27 @@ body {
         font-size: 30px;
         margin-right: 60px;
         margin-bottom: 80px; }
+  body article {
+    display: inline-block;
+    text-align: center; }
+    body article .homeCards {
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; }
+      body article .homeCards .card {
+        display: inline-block;
+        height: auto;
+        min-width: 250px;
+        max-width: 350px;
+        margin-top: 20px;
+        margin-right: 10px;
+        padding-top: 10px; }
+        body article .homeCards .card .card-img-top {
+          width: 100%;
+          height: 150px; }
+        body article .homeCards .card .card-title a {
+          font-size: 1em; }
   body .coverTrick {
     width: 100%;
     height: auto;
@@ -50,52 +79,81 @@ body {
       background: rgba(228, 228, 228, 0.4);
       min-width: 10px;
       max-width: 90px; }
-  body article {
-    display: inline-block;
-    text-align: center; }
-    body article .homeCards {
-      margin: auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center; }
-      body article .homeCards .card {
-        height: auto;
-        display: inline-block;
-        margin: 10px;
-        padding-top: 10px;
-        min-width: 250px;
-        max-width: 350px; }
-        body article .homeCards .card .card-img-top {
-          width: 100%;
-          height: 150px; }
-  body .trickPictures, body .trickDescription, body .trickInfos, body .trickCommentsForm, body .trickComments {
+  body .trickDescription, body .trickInfos, body .trickCommentsForm, body .trickComments {
+    margin-left: 2%;
+    margin-right: 2%;
     margin-bottom: 50px; }
-  body .trickPictures .gridPictures {
-    height: 200px;
-    width: 200px; }
-    body .trickPictures .gridPictures .gridPicturesImg {
-      width: 100%;
-      height: 100%; }
-  body .custom-file-input {
-    opacity: 1; }
+  body .trickPictures {
+    display: none; }
+  body .comment {
+    margin-bottom: 20px; }
+    body .comment .imageAvatar {
+      min-height: 36px;
+      max-height: 37px;
+      min-width: 65px;
+      max-width: 70px; }
   body .imgFormTheme {
     width: 20%; }
-  body .imageAvatar {
-    min-height: 36px;
-    max-height: 37px;
-    min-width: 65px;
-    max-width: 70px; }
-
-iframe {
-  position: relative;
-  width: 100%;
-  height: 100%; }
 
 footer {
   margin-top: 2%; }
+  footer p {
+    border-top: 1px solid #6E6E6E;
+    padding: 1% 2% 0% 2%; }
 
-footer p {
-  border-top: 1px solid #6E6E6E;
-  padding: 1% 2% 0% 2%; }
+/**
+    Small
+ */
+@media screen and (min-width: 540px) and (max-width: 719px) {
+  body .trickPictures, body .trickDescription, body .trickInfos, body .trickCommentsForm, body .trickComments {
+    margin-bottom: 50px; }
+  body .trickPictures {
+    display: inline-block; }
+    body .trickPictures .gridPictures {
+      height: 200px;
+      width: 200px; }
+      body .trickPictures .gridPictures .gridPicturesImg {
+        width: 100%;
+        height: 100%; }
+  body iframe {
+    position: relative;
+    width: 100%;
+    height: 100%; } }
+/**
+    Medium
+ */
+@media screen and (min-width: 720px) and (max-width: 959px) {
+  body .trickPictures, body .trickDescription, body .trickInfos, body .trickCommentsForm, body .trickComments {
+    margin-bottom: 50px; }
+  body .trickPictures {
+    display: inline-block; }
+    body .trickPictures .gridPictures {
+      height: 200px;
+      width: 200px; }
+      body .trickPictures .gridPictures .gridPicturesImg {
+        width: 100%;
+        height: 100%; }
+  body iframe {
+    position: relative;
+    width: 100%;
+    height: 100%; } }
+/**
+    Large
+ */
+@media screen and (min-width: 960px) {
+  body .trickPictures, body .trickDescription, body .trickInfos, body .trickCommentsForm, body .trickComments {
+    margin-bottom: 50px; }
+  body .trickPictures {
+    display: inline-block; }
+    body .trickPictures .gridPictures {
+      height: 200px;
+      width: 200px; }
+      body .trickPictures .gridPictures .gridPicturesImg {
+        width: 100%;
+        height: 100%; }
+  body iframe {
+    position: relative;
+    width: 100%;
+    height: 100%; } }
 
 /*# sourceMappingURL=style.css.map */

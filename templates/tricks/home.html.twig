@@ -30,9 +30,9 @@
                     {% endif %}
                     <div class="card-body">
                         <div class="row">
-                            <h4 class="card-title col-sm-9 col-md-10 col-lg-8 col-xl-8"><a href="{{ path('showTrick', {'id': trick.id}) }}">{{ trick.name }}</a></h4>
+                            <h4 class="card-title col-7"><a href="{{ path('showTrick', {'id': trick.id}) }}">{{ trick.name }}</a></h4>
                             {% if is_granted('ROLE_ADMIN') %}
-                                <div class="col-sm-3 col-md-2 col-lg-4 col-xl-4">
+                                <div class="col-5">
                                     <a href="{{ path('editTrick', {id: trick.id}) }}"><i class="fas fa-pencil-alt"></i></a>
                                     <form action="{{ path('deleteTrick', {id: trick.id}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
                                         <input type="hidden" name="_method" value="DELETE" />
