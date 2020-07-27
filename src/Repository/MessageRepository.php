@@ -29,8 +29,6 @@ class MessageRepository extends ServiceEntityRepository
 			->setFirstResult($offset)
 			->getQuery()
 			->getResult();
-
-
 	}
 
     // /**

@@ -71,7 +71,7 @@ class TrickController extends AbstractController
 	{
 		return $this->render('tricks/showMessages.html.twig', [
 			// (1ère méthode) : 'messages' => $trick->getMessages()->slice($offset, $limit),
-			'messages' => $repo->findMessages($id, $limit, $offset),
+			'messages' => $repo->findMessages($id, $limit, $offset), // (2ème méthode)
 		]);
 	}
 

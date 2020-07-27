@@ -50,6 +50,11 @@ class AdminTrickController extends AbstractController
 				$fileUploader->upload($picture);
 			};
 
+			foreach($trick->getVideos() as $video) {
+				$code = substr($video->getUrl(), 7);
+				$video->setUrl($code);
+			}
+
 			$manager->persist($trick);
 			$manager->flush();
 

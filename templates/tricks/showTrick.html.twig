@@ -10,6 +10,14 @@
         </div>
         {% if trick.pictures is empty %}
             <img src="/images/empty.jpg" alt="image">
+            <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 iconsImage1">
+                <a href="{{ path('editTrick', {id: trick.id}) }}"><i class="fas fa-pencil-alt"></i></a>
+                <form action="{{ path('deleteTrick', {id: trick.id}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}" />
+                    <button class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
+                </form>
+            </div>
         {% else %}
             {% for picture in trick.pictures %}
                 {% if loop.index == 1 %}

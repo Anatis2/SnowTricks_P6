@@ -50,7 +50,7 @@ class Trick
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="trick")
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="trick", cascade={"persist", "remove"})
 	 * @ORM\OrderBy({"createdAt" = "DESC"})
      */
     private $messages;
