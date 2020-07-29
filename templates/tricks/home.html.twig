@@ -20,7 +20,7 @@
             {% for trick in tricks %}
                 <div class="card col-sm-4 col-md-10 col-lg-2 col-xl-2">
                     {% if trick.pictures is empty %}
-                        <img src="/images/empty.jpg" class="card-img-top" alt="image">
+                        <img src="{{ asset('images/empty.jpg') }}" class="card-img-top" alt="image">
                     {% else %}
                         {% for picture in trick.pictures %}
                             {% if loop.index == 1 %}

@@ -11,6 +11,8 @@ body {
     margin-top: 2%; }
   body .btn {
     padding: 5px; }
+  body .pagination {
+    margin-top: 2%; }
   body .coverHome {
     width: 100%;
     height: 100vh;

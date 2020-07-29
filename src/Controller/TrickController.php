@@ -28,7 +28,7 @@ class TrickController extends AbstractController
         $tricks = $paginator->paginate(
             $repo->findAll(),
             $request->query->getInt('page', 1),
-            15
+            12
         );
 
         return $this->render('tricks/home.html.twig', [
@@ -38,9 +38,9 @@ class TrickController extends AbstractController
 
     /**
      * @Route("/figure/{id}", name="showTrick",
-	 *     requirements={"id" = "\d+"},
-	 *	   defaults={"id" = 1}
-	 * )
+     *     requirements={"id" = "\d+"},
+     *	   defaults={"id" = 1}
+     * )
      */
     public function show(Trick $trick, Request $request, EntityManagerInterface $manager)
     {
@@ -54,8 +54,8 @@ class TrickController extends AbstractController
             $message->setCreatedAt(new \DateTime());
             $manager->persist($message);
             $manager->flush();
-			$this->addFlash('notice', 'Votre commentaire a bien été enregistré !');
-			return $this->redirect("/figure/" . $trick->getId());
+            $this->addFlash('notice', 'Votre commentaire a bien été enregistré !');
+            return $this->redirect("/figure/" . $trick->getId());
         }
 
         return $this->render('tricks/showTrick.html.twig', [
@@ -64,15 +64,14 @@ class TrickController extends AbstractController
         ]);
     }
 
-	/**
-	 * @Route("/figure/{id}/messages/{offset}/{limit}", name="loadMessages", defaults={"offset"=0, "limit"=5})
-	 */
+    /**
+     * @Route("/figure/{id}/messages/{offset}/{limit}", name="loadMessages", defaults={"offset"=0, "limit"=5})
+     */
     public function loadMessages($id, $limit, $offset, MessageRepository $repo)
-	{
-		return $this->render('tricks/showMessages.html.twig', [
-			// (1ère méthode) : 'messages' => $trick->getMessages()->slice($offset, $limit),
-			'messages' => $repo->findMessages($id, $limit, $offset), // (2ème méthode)
-		]);
-	}
-
+    {
+        return $this->render('tricks/showMessages.html.twig', [
+            // (1ère méthode) : 'messages' => $trick->getMessages()->slice($offset, $limit),
+            'messages' => $repo->findMessages($id, $limit, $offset), // (2ème méthode)
+        ]);
+    }
 }
