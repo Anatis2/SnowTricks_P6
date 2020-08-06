@@ -1,4 +1,7 @@
 # SnowTricks_P6
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c5f0556642de4e68855bad1c9920f6fa)](https://app.codacy.com/manual/Anatis2/SnowTricks_P6?utm_source=github.com&utm_medium=referral&utm_content=Anatis2/SnowTricks_P6&utm_campaign=Badge_Grade_Dashboard)
+
 Site communautaire pour l'apprentissage du snowboard (projet 6 du parcours de développeur d'applications PHP/Symfony de OpenClassrooms)
 
 
