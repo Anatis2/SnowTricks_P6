@@ -19,11 +19,11 @@ class MessageRepository extends ServiceEntityRepository
         parent::__construct($registry, Message::class);
     }
 
-    public function findMessages(int $id, $limit, $offset)
+    public function findMessages($name, $limit, $offset)
 	{
 		return $this->createQueryBuilder('m')
-			->where("m.trick = :id")
-			->setParameter('id', $id)
+			->where("m.trick = :name")
+			->setParameter('name', $name)
 			->orderBy('m.createdAt','DESC')
 			->setMaxResults($limit)
 			->setFirstResult($offset)

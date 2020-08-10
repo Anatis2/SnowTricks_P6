@@ -29,10 +29,10 @@
                     <tr>
                         <td>{{ trick.name }}</td>
                         <td>
-                            <a href="{{ path('editTrick', {id: trick.id}) }}" class="btn btn-secondary">Editer</a>
-                            <form action="{{ path('deleteTrick', {id: trick.id}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
+                            <a href="{{ path('editTrick', {name: trick.name}) }}" class="btn btn-secondary">Editer</a>
+                            <form action="{{ path('deleteTrick', {name: trick.name}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
                                 <input type="hidden" name="_method" value="DELETE" />
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}" />
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.name) }}" />
                                 <button class="btn btn-danger">Supprimer</button>
                             </form>
                         </td>

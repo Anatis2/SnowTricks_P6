@@ -69,7 +69,7 @@ class AdminTrickController extends AbstractController
 
 
     /**
-     * @Route("/edition/{id}", name="editTrick")
+     * @Route("/edition/{name}", name="editTrick")
      */
     public function editTrick(Trick $trick, Request $request, EntityManagerInterface $manager, FileUploader $fileUploader)
     {
@@ -103,11 +103,11 @@ class AdminTrickController extends AbstractController
     }
 
     /**
-     * @Route("/suppression/{id}", name="deleteTrick")
+     * @Route("/suppression/{name}", name="deleteTrick")
      */
     public function deleteTrick(Trick $trick, Request $request, EntityManagerInterface $manager)
     {
-        if ($this->isCsrfTokenValid('delete' . $trick->getId(), $request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $trick->getName(), $request->get('_token'))) {
             $manager->remove($trick);
             $manager->flush();
             $this->addFlash('success', 'La figure a été supprimée avec succès !');

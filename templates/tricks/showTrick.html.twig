@@ -10,24 +10,26 @@
         </div>
         {% if trick.pictures is empty %}
             <img src="{{ asset('images/empty.jpg') }}" alt="image">
-            <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 iconsImage1">
-                <a href="{{ path('editTrick', {id: trick.id}) }}"><i class="fas fa-pencil-alt"></i></a>
-                <form action="{{ path('deleteTrick', {id: trick.id}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
-                    <input type="hidden" name="_method" value="DELETE" />
-                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}" />
-                    <button class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
-                </form>
-            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 iconsImage1">
+                    <a href="{{ path('editTrick', {name: trick.name}) }}"><i class="fas fa-pencil-alt"></i></a>
+                    <form action="{{ path('deleteTrick', {name: trick.name}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}" />
+                        <button class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                </div>
+            {% endif %}
         {% else %}
             {% for picture in trick.pictures %}
                 {% if loop.index == 1 %}
                     <img src="/uploads/{{ picture.filename }}" alt="image">
                     {% if is_granted('ROLE_ADMIN') %}
                         <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 iconsImage1">
-                            <a href="{{ path('editTrick', {id: trick.id}) }}"><i class="fas fa-pencil-alt"></i></a>
-                            <form action="{{ path('deleteTrick', {id: trick.id}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
+                            <a href="{{ path('editTrick', {name: trick.name}) }}"><i class="fas fa-pencil-alt"></i></a>
+                            <form action="{{ path('deleteTrick', {name: trick.name}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
                                 <input type="hidden" name="_method" value="DELETE" />
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}" />
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.name) }}" />
                                 <button class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
                             </form>
                         </div>

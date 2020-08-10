@@ -37,9 +37,8 @@ class TrickController extends AbstractController
     }
 
     /**
-     * @Route("/figure/{id}", name="showTrick",
-     *     requirements={"id" = "\d+"},
-     *	   defaults={"id" = 1}
+     * @Route("/figure/{name}", name="showTrick",
+     *
      * )
      */
     public function show(Trick $trick, Request $request, EntityManagerInterface $manager)
@@ -55,7 +54,7 @@ class TrickController extends AbstractController
             $manager->persist($message);
             $manager->flush();
             $this->addFlash('notice', 'Votre commentaire a bien été enregistré !');
-            return $this->redirect("/figure/" . $trick->getId());
+            return $this->redirect("/figure/" . $trick->getName());
         }
 
         return $this->render('tricks/showTrick.html.twig', [
