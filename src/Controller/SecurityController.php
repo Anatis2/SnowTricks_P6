@@ -39,6 +39,7 @@ class SecurityController extends AbstractController
             $password = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
             $user->setActivationToken(md5(uniqid()));
+            $user->setRoles(['ROLE_USER']);
             $fileUploader->uploadAvatar($user);
             $manager->persist($user);
             $manager->flush();

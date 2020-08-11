@@ -12,9 +12,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/admin")
+ * @isGranted("ROLE_USER")
  */
 class AdminTrickController extends AbstractController
 {
@@ -43,6 +45,8 @@ class AdminTrickController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+        	$trick->setUser($this->getUser());
+
             /**
              * @var UploadedFile $file
              */
@@ -70,11 +74,16 @@ class AdminTrickController extends AbstractController
 
     /**
      * @Route("/edition/{name}", name="editTrick")
+	 * @IsGranted("EDIT", subject="trick")
      */
     public function editTrick(Trick $trick, Request $request, EntityManagerInterface $manager, FileUploader $fileUploader)
     {
         $form = $this->createForm(TrickType::class, $trick);
         $form->handleRequest($request);
+
+		if (!$this->isGranted('EDIT', $trick)) {
+			throw $this->createAccessDeniedException();
+		}
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -114,4 +123,5 @@ class AdminTrickController extends AbstractController
             return $this->redirectToRoute('adminHome');
         }
     }
+
 }

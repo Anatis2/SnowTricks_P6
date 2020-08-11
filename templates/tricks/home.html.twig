@@ -31,7 +31,6 @@
                     <div class="card-body">
                         <div class="row">
                             <h4 class="card-title col-7"><a href="{{ path('showTrick', {'name': trick.name}) }}">{{ trick.name }}</a></h4>
-                            {% if is_granted('ROLE_ADMIN') %}
                                 <div class="col-5">
                                     <a href="{{ path('editTrick', {name: trick.name}) }}"><i class="fas fa-pencil-alt"></i></a>
                                     <form action="{{ path('deleteTrick', {name: trick.name}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
@@ -40,7 +39,6 @@
                                         <button class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
                                     </form>
                                 </div>
-                            {% endif %}
                         </div>
                     </div>
                 </div>

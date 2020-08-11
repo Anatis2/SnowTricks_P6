@@ -37,7 +37,7 @@ class UserFixtures extends Fixture
                 "password" => "user",
 				"avatarFilename" => "Avatar1.png",
 				"activated_token" => "1",
-                "roles" => []
+                "roles" => ["ROLE_USER"]
             ],
 			[
 				"surname" => "User2",
@@ -46,7 +46,7 @@ class UserFixtures extends Fixture
 				"password" => "user2",
 				"avatarFilename" => "Avatar3.png",
 				"activated_token" => "1",
-				"roles" => []
+				"roles" => ["ROLE_USER"]
 			],
         ];
         

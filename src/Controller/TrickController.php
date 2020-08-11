@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class TrickController extends AbstractController
 {
     /**
@@ -73,4 +74,5 @@ class TrickController extends AbstractController
             'messages' => $repo->findMessages($id, $limit, $offset), // (2ème méthode)
         ]);
     }
+
 }
