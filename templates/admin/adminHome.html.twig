@@ -29,7 +29,7 @@
                     <tr>
                         <td>{{ trick.name }}</td>
                         <td>
-                            {% if is_granted('EDIT', trick) %}
+                            {% if is_granted('ROLE_USER') %}
                             <a href="{{ path('editTrick', {name: trick.name}) }}" class="btn btn-secondary">Editer</a>
                             <form action="{{ path('deleteTrick', {name: trick.name}) }}" method="post" style="display: inline-block" onsubmit="return confirm('Voulez-vous vraiment supprimer cette figure ?')">
                                 <input type="hidden" name="_method" value="DELETE" />

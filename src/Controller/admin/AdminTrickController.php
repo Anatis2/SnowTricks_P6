@@ -74,16 +74,11 @@ class AdminTrickController extends AbstractController
 
     /**
      * @Route("/edition/{name}", name="editTrick")
-	 * @IsGranted("EDIT", subject="trick")
      */
     public function editTrick(Trick $trick, Request $request, EntityManagerInterface $manager, FileUploader $fileUploader)
     {
         $form = $this->createForm(TrickType::class, $trick);
         $form->handleRequest($request);
-
-		if (!$this->isGranted('EDIT', $trick)) {
-			throw $this->createAccessDeniedException();
-		}
 
         if ($form->isSubmitted() && $form->isValid()) {
 
